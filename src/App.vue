@@ -22,6 +22,7 @@ export default {
     width: 1200px;
     margin: auto;
     font-size: 0;
+    box-shadow: 0 0 5px #333;
 
 }
   .sidebar{
@@ -39,6 +40,6 @@ export default {
     min-height: 700px; 
     height: 100vh;           
     background-color: #eee;  
-    color: #333;  
+    color: #333;
   }
 </style>
