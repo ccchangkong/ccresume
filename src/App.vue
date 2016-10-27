@@ -1,30 +1,44 @@
 <template>
   <div id="app">
-    <img src="./assets/logo.png">
-    <hello></hello>
     <sidebar></sidebar>
+    <subject></subject>   
   </div>
 </template>
 
 <script>
-import Hello from './components/Hello'
 import Sidebar from './components/Sidebar'
+import Subject from './components/Subject'
 export default {
   name: 'app',
   components: {
-    Hello,
-    Sidebar
+    Sidebar,
+    Subject
   }
 }
 </script>
 
 <style>
 #app {
-  font-family: 'Avenir', Helvetica, Arial, sans-serif;
-  -webkit-font-smoothing: antialiased;
-  -moz-osx-font-smoothing: grayscale;
-  text-align: center;
-  color: #2c3e50;
-  margin-top: 60px;
+    width: 1200px;
+    margin: auto;
+    font-size: 0;
+
 }
+  .sidebar{
+    display: inline-block;
+    width: 25%; 
+    min-height: 700px;
+    height: 100vh;    
+    background-color: #4da2fd;  
+    color: #fff;
+    vertical-align: top;
+  }
+  .subject{
+    display: inline-block;
+    width: 75%;   
+    min-height: 700px; 
+    height: 100vh;           
+    background-color: #eee;  
+    color: #333;  
+  }
 </style>

@@ -1,15 +1,15 @@
 <template>
-  <div class="sidebar">
-    <h1>{{ msg }}</h1>
+  <div class="subject">
+<h1>{{ msg }}</h1>
   </div>
 </template>
 
 <script>
 export default {
-  name: 'sidebar',
+  name: 'subject',
   data () {
     return {
-      msg: 'Welcome to Your Vue.js'
+      msg: 'Welcome to Your Vue.js App'
     }
   }
 }
@@ -18,7 +18,7 @@ export default {
 <!-- Add "scoped" attribute to limit CSS to this component only -->
 <style scoped>
 h1{
-	font-size: 14px;
-	text-align: center;
+  font-size: 26px;
+  text-align: center;
 }
 </style>
