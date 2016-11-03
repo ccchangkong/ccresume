@@ -1,6 +1,6 @@
 <template>
   <div id="app">
-  <p>{{values}}</p>
+  <!-- <p>{{values}}</p> -->
     <sidebar></sidebar>
     <subject :valuess.sync="values" @onInput="onInputs"></subject>   
   </div>
@@ -29,6 +29,7 @@ export default {
         time: window.Date.now()
       }
       this.resume.push(data)
+      console.log(this.values)
     }
   },
   watch: {
@@ -50,24 +51,15 @@ export default {
     box-shadow: 0 0 5px #333;
 
 }
+#app .el-input__inner,#app .el-input-group__prepend{
+  border: none;
+   background-color: #3090e0;
+   text-align: center;
+   font-size: 2em;
+}
 p{
   font-size: 10px;
 }
-  .sidebar{
-    display: inline-block;
-    width: 25%; 
-    min-height: 700px;
-    height: 100vh;    
-    background-color: #4da2fd;  
-    color: #fff;
-    vertical-align: top;
-  }
-  .subject{
-    display: inline-block;
-    width: 75%;   
-    min-height: 700px; 
-    height: 100vh;           
-    background-color: #eee;  
-    color: #333;
-  }
+
+
 </style>

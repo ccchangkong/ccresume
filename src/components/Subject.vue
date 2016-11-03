@@ -28,6 +28,20 @@ export default {
 
 <!-- Add "scoped" attribute to limit CSS to this component only -->
 <style scoped>
+  .subject{
+    display: inline-block;
+    width: 75%;   
+    min-height: 700px; 
+    height: 100vh;       
+    background-color: #ddd;  
+
+    color: #333;
+    transition: .5s;
+  }
+  .subject:hover{
+    background-color: #eee;  
+    
+  }
 h1{
   font-size: 26px;
   text-align: center;
