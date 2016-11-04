@@ -4,9 +4,9 @@
   <el-input placeholder="请输入内容" v-model="cdate.name"><template slot="prepend">姓名</template></el-input> 
   <el-input placeholder="请输入内容" v-model="cdate.offer"><template slot="prepend">职务</template></el-input> 
   <el-input placeholder="请输入内容" v-model="cdate.link"><template slot="prepend">联系方式</template></el-input> 
-  <el-rate v-model="cdate.skils.js"></el-rate>
-  <el-rate v-model="cdate.skils.css"></el-rate>
-  <el-rate v-model="cdate.skils.html"></el-rate>
+    <el-input placeholder="技能" v-model="cdate.name"></el-input> <el-rate v-model="cdate.skils.js"></el-rate>
+<!--   <el-rate v-model="cdate.skils.css"></el-rate>
+  <el-rate v-model="cdate.skils.html"></el-rate> -->
     <i class="el-icon-setting"></i>
   </div>
 </template>
@@ -41,12 +41,18 @@ export default {
 </script>
 
 <!-- Add "scoped" attribute to limit CSS to this component only -->
-<style scoped>
+<style>
+#sidebar .el-input__inner,#sidebar .el-input-group__prepend{
+  border: none;
+   background-color: #4595f5;
+   text-align: center;
+   font-size: 2em;
+}
   .sidebar{
     display: inline-block;
     width: 25%; 
     min-height: 700px;
-    background-color: #3090e0;  
+    background-color: #4595f5;  
     height: 100vh;    
     color: #fff;
     vertical-align: top;

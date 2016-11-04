@@ -49,13 +49,6 @@ export default {
     margin: auto;
     font-size: 0;
     box-shadow: 0 0 5px #333;
-
-}
-#app .el-input__inner,#app .el-input-group__prepend{
-  border: none;
-   background-color: #3090e0;
-   text-align: center;
-   font-size: 2em;
 }
 p{
   font-size: 10px;
