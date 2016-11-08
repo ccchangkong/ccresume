@@ -4,10 +4,18 @@
   <el-input placeholder="请输入内容" v-model="cdate.name"><template slot="prepend">姓名</template></el-input> 
   <el-input placeholder="请输入内容" v-model="cdate.offer"><template slot="prepend">职务</template></el-input> 
   <el-input placeholder="请输入内容" v-model="cdate.link"><template slot="prepend">联系方式</template></el-input> 
-    <el-input placeholder="技能" v-model="cdate.name"></el-input> <el-rate v-model="cdate.skils.js"></el-rate>
-<!--   <el-rate v-model="cdate.skils.css"></el-rate>
-  <el-rate v-model="cdate.skils.html"></el-rate> -->
-    <i class="el-icon-setting"></i>
+   <div class="s-skils-box">
+      <el-input placeholder="技能1"  class='s-skils-title'></el-input> <el-rate v-model="cdate.skils.js" class='s-skils-rate'></el-rate>   
+   </div>
+  <div class="s-skils-box"> 
+    <el-input placeholder="技能2"  class='s-skils-title'></el-input> <el-rate v-model="cdate.skils.html" class='s-skils-rate'></el-rate>
+    </div>
+  <div class="s-skils-box"> 
+  <el-input placeholder="技能3"  class='s-skils-title'></el-input> <el-rate v-model="cdate.skils.css" class='s-skils-rate'></el-rate>
+  </div>
+       
+
+    <i class="el-icon-setting s-set"  @click="open('设置什么呢')"></i>
   </div>
 </template>
 
@@ -57,6 +65,7 @@ export default {
     color: #fff;
     vertical-align: top;
     transition: .5s;
+    position: relative;
   }
   .sidebar:hover{
     background-color: #4da2fd;  
@@ -80,5 +89,17 @@ export default {
 }
 .el-icon-setting:hover{
   transform: rotate(180deg);
+}
+.s-skils-title{
+  display: inline-block;
+  width: 80px;
+}
+.s-skils-rate{
+  display: inline-block;
+}
+.s-set{
+  position: absolute;
+  bottom: 80px;
+  left: 10px;
 }
 </style>
