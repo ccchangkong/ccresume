@@ -2,7 +2,7 @@
   <div id="app">
   <!-- <p>{{values}}</p> -->
     <sidebar></sidebar>
-    <subject :valuess.sync="values" @onInput="onInputs"></subject>   
+    <subject :valuess.sync="values" @onInput="onInputs"></subject>
   </div>
 </template>
 
@@ -44,6 +44,9 @@ export default {
 </script>
 
 <style>
+body{
+  font-family: "Helvetica Neue",Helvetica,"PingFang SC","Hiragino Sans GB","Microsoft YaHei","微软雅黑",Arial,sans-serif;
+}
 #app {
     width: 1200px;
     margin: auto;
@@ -53,6 +56,10 @@ export default {
 p{
   font-size: 10px;
 }
-
-
+#app .el-input__inner,#app .el-input-group__prepend{
+  border: none;
+   background-color: transparent;
+   text-align: center;
+   font-size: 1.4em;
+}
 </style>

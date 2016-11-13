@@ -1,19 +1,19 @@
 <template>
   <div class="sidebar" id="sidebar">
-  <img src="../img/avatar.jpg" alt="" class="avatar" :plain="true" @click="open('点我也没啥用啦')"> 
-  <el-input placeholder="请输入内容" v-model="cdate.name"><template slot="prepend">姓名</template></el-input> 
-  <el-input placeholder="请输入内容" v-model="cdate.offer"><template slot="prepend">职务</template></el-input> 
-  <el-input placeholder="请输入内容" v-model="cdate.link"><template slot="prepend">联系方式</template></el-input> 
+  <img src="../img/avatar.jpg" alt="" class="avatar" :plain="true" @click="open('点我也没啥用啦')">
+  <el-input placeholder="请输入内容" v-model="cdate.name"><template slot="prepend">姓名</template></el-input>
+  <el-input placeholder="请输入内容" v-model="cdate.offer"><template slot="prepend">职务</template></el-input>
+  <el-input placeholder="请输入内容" v-model="cdate.link"><template slot="prepend">联系方式</template></el-input>
    <div class="s-skils-box">
-      <el-input placeholder="技能1"  class='s-skils-title'></el-input> <el-rate v-model="cdate.skils.js" class='s-skils-rate'></el-rate>   
+      <el-input placeholder="技能1"  class='s-skils-title'></el-input> <el-rate v-model="cdate.skils.js" class='s-skils-rate'></el-rate>
    </div>
-  <div class="s-skils-box"> 
+  <div class="s-skils-box">
     <el-input placeholder="技能2"  class='s-skils-title'></el-input> <el-rate v-model="cdate.skils.html" class='s-skils-rate'></el-rate>
     </div>
-  <div class="s-skils-box"> 
+  <div class="s-skils-box">
   <el-input placeholder="技能3"  class='s-skils-title'></el-input> <el-rate v-model="cdate.skils.css" class='s-skils-rate'></el-rate>
   </div>
-       
+
 
     <i class="el-icon-setting s-set"  @click="open('设置什么呢')"></i>
   </div>
@@ -50,32 +50,26 @@ export default {
 
 <!-- Add "scoped" attribute to limit CSS to this component only -->
 <style>
-#sidebar .el-input__inner,#sidebar .el-input-group__prepend{
-  border: none;
-   background-color: #4595f5;
-   text-align: center;
-   font-size: 2em;
-}
   .sidebar{
     display: inline-block;
-    width: 25%; 
+    width: 25%;
     min-height: 700px;
-    background-color: #4595f5;  
-    height: 100vh;    
+    background-color: #4595f5;
+    height: 100vh;
     color: #fff;
     vertical-align: top;
     transition: .5s;
     position: relative;
   }
   .sidebar:hover{
-    background-color: #4da2fd;  
+    background-color: #4da2fd;
 
   }
   .avatar{
 	 border-radius: 50%;
 	 display: block;
 	 margin: 20px auto;
-   box-shadow: 0 0 5px #ddd; 
+   box-shadow: 0 0 5px #ddd;
 	 transition: .5s;
   }
   .avatar:hover{
