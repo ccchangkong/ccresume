@@ -1,23 +1,38 @@
 <template>
   <div class="sidebar" id="sidebar">
-  <img src="../img/avatar.jpg" alt="" class="avatar" :plain="true" @click="open('点我也没啥用啦')">
-  <el-input placeholder="请输入内容" v-model="cdate.name"><template slot="prepend">姓名</template></el-input>
-  <el-input placeholder="请输入内容" v-model="cdate.offer"><template slot="prepend">职务</template></el-input>
-  <el-input placeholder="请输入内容" v-model="cdate.link"><template slot="prepend">联系方式</template></el-input>
-   <div class="s-skils-box">
-      <el-input placeholder="技能1"  class='s-skils-title'></el-input> <el-rate v-model="cdate.skils.js" class='s-skils-rate'></el-rate>
-   </div>
-  <div class="s-skils-box">
-    <el-input placeholder="技能2"  class='s-skils-title'></el-input> <el-rate v-model="cdate.skils.html" class='s-skils-rate'></el-rate>
+    <img src="../img/avatar.jpg" alt="" class="avatar" :plain="true" @click="open('点我也没啥用啦')">
+    <div class="s-core">
+      <el-input placeholder="请输入内容" v-model="cdate.name">
+        <template slot="prepend">姓名</template>
+      </el-input>
+      <el-input placeholder="请输入内容" v-model="cdate.offer">
+        <template slot="prepend">职务</template>
+      </el-input>
+      <el-input placeholder="请输入内容" v-model="cdate.link">
+        <template slot="prepend">联系方式</template>
+      </el-input>
     </div>
-  <div class="s-skils-box">
-  <el-input placeholder="技能3"  class='s-skils-title'></el-input> <el-rate v-model="cdate.skils.css" class='s-skils-rate'></el-rate>
-  </div>
-
-
-    <i class="el-icon-setting s-set"  @click="open('设置什么呢')"></i>
+    <div class="s-skils">
+      <div class="s-skils-box">
+        <el-input placeholder="技能1" class='s-skils-title'></el-input>
+        <el-rate v-model="cdate.skils.js" class='s-skils-rate'></el-rate>
+      </div>
+      <div class="s-skils-box">
+        <el-input placeholder="技能2" class='s-skils-title'></el-input>
+        <el-rate v-model="cdate.skils.html" class='s-skils-rate'></el-rate>
+      </div>
+      <div class="s-skils-box">
+        <el-input placeholder="技能3" class='s-skils-title'></el-input>
+        <el-rate v-model="cdate.skils.css" class='s-skils-rate'></el-rate>
+      </div>
+      <el-button style="float: right;" type="primary" icon="plus">添加</el-button>
+    </div>
+    <i class="el-icon-setting s-set" @click="open('设置什么呢')"></i>
   </div>
 </template>
+
+
+
 
 <script>
 export default {
@@ -51,18 +66,19 @@ export default {
 <!-- Add "scoped" attribute to limit CSS to this component only -->
 <style>
   .sidebar{
-    display: inline-block;
     width: 25%;
-    min-height: 700px;
-    background-color: #4595f5;
-    height: 100vh;
+    min-height: 100vh;
+    background-color: #1D8CE0;
     color: #fff;
     vertical-align: top;
     transition: .5s;
     position: relative;
+    padding: 20px;
+    box-sizing:border-box;
+
   }
   .sidebar:hover{
-    background-color: #4da2fd;
+    background-color: #20A0FF;
 
   }
   .avatar{
@@ -84,6 +100,9 @@ export default {
 .el-icon-setting:hover{
   transform: rotate(180deg);
 }
+.s-skils{
+  /*margin-bottom: 50px;*/
+}
 .s-skils-title{
   display: inline-block;
   width: 80px;
@@ -94,6 +113,6 @@ export default {
 .s-set{
   position: absolute;
   bottom: 80px;
-  left: 10px;
+  left: 50px;
 }
 </style>
