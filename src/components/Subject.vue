@@ -1,52 +1,63 @@
 <template>
-<div class="subject">
-    <h2>工作经历</h2>
-    <div class="block">
-        <span class="demonstration">带快捷选项</span>
-        <el-date-picker v-model="value7" type="daterange" align="right" placeholder="选择日期范围" :picker-options="pickerOptions2" style="width: 220px">
-        </el-date-picker>
-        <el-input placeholder="请输入内容" v-model="value6">
-            <template slot="prepend">公司</template>
-        </el-input>
-        <el-input placeholder="请输入内容" v-model="value6">
-            <template slot="prepend">职务</template>
-        </el-input>
-        <el-input placeholder="描述" v-model="value6"></el-input>
+    <div class="subject">
+        <el-card class="box-card">
+            <div slot="header" class="clearfix">
+                <h2>工作经历</h2>
+                <el-button style="float: right;" type="primary" icon="plus">添加</el-button>
+            </div>
+            <div class="block">
+                <span class="demonstration">带快捷选项</span>
+                <el-date-picker v-model="value7" type="daterange" align="right" placeholder="选择日期范围" :picker-options="pickerOptions2" style="width: 220px">
+                </el-date-picker>
+                <el-input placeholder="请输入内容" v-model="value6">
+                    <template slot="prepend">公司</template>
+                </el-input>
+                <el-input placeholder="请输入内容" v-model="value6">
+                    <template slot="prepend">职务</template>
+                </el-input>
+                <el-input placeholder="描述" v-model="value6"></el-input>
+            </div>
+        </el-card>
+        <el-card class="box-card">
+            <div slot="header" class="clearfix">
+                <h2>教育经历</h2>
+                <el-button style="float: right;" type="primary">操作按钮</el-button>
+            </div>
+            <div class="block">
+                <span class="demonstration">带快捷选项</span>
+                <el-date-picker v-model="value7" type="daterange" align="right" placeholder="选择日期范围" :picker-options="pickerOptions2" style="width: 220px">
+                </el-date-picker>
+                <el-input placeholder="请输入内容" v-model="value6">
+                    <template slot="prepend">公司</template>
+                </el-input>
+                <el-input placeholder="请输入内容" v-model="value6">
+                    <template slot="prepend">职务</template>
+                </el-input>
+                <el-input placeholder="描述" v-model="value6"></el-input>
+            </div>
+        </el-card>
+        <el-card class="box-card">
+            <div slot="header" class="clearfix">
+                <h2>项目经历</h2>
+                <el-button style="float: right;" type="primary">操作按钮</el-button>
+            </div>
+            <div class="block">
+                <span class="demonstration">带快捷选项</span>
+                <el-date-picker v-model="value7" type="daterange" align="right" placeholder="选择日期范围" :picker-options="pickerOptions2" style="width: 220px">
+                </el-date-picker>
+                <el-input placeholder="请输入内容" v-model="value6">
+                    <template slot="prepend">公司</template>
+                </el-input>
+                <el-input placeholder="请输入内容" v-model="value6">
+                    <template slot="prepend">职务</template>
+                </el-input>
+                <el-input placeholder="描述" v-model="value6"></el-input>
+            </div>
+        </el-card>
+        <el-button style="float: right;" type="primary" icon="plus">添加</el-button>
     </div>
-        <h2>教育经历</h2>
-    <div class="block">
-        <span class="demonstration">带快捷选项</span>
-        <el-date-picker v-model="value7" type="daterange" align="right" placeholder="选择日期范围" :picker-options="pickerOptions2" style="width: 220px">
-        </el-date-picker>
-        <el-input placeholder="请输入内容" v-model="value6">
-            <template slot="prepend">公司</template>
-        </el-input>
-        <el-input placeholder="请输入内容" v-model="value6">
-            <template slot="prepend">职务</template>
-        </el-input>
-        <el-input placeholder="描述" v-model="value6"></el-input>
-    </div>
-        <h2>项目经历</h2>
-    <div class="block">
-        <span class="demonstration">带快捷选项</span>
-        <el-date-picker v-model="value7" type="daterange" align="right" placeholder="选择日期范围" :picker-options="pickerOptions2" style="width: 220px">
-        </el-date-picker>
-        <el-input placeholder="请输入内容" v-model="value6">
-            <template slot="prepend">公司</template>
-        </el-input>
-        <el-input placeholder="请输入内容" v-model="value6">
-            <template slot="prepend">职务</template>
-        </el-input>
-        <el-input placeholder="描述" v-model="value6"></el-input>
-    </div>
-    <div class="block">
-        <p @click="onInput">{{valuess}}</p>
-        <span class="demonstration">默认不区分颜色</span>
-        <el-rate v-model="valuess"></el-rate>
-    </div>
-</div>
-
 </template>
+
 
 <script>
 export default {
@@ -113,6 +124,7 @@ export default {
 h2 {
   font-size: 26px;
   text-align: left;
+  display: inline-block;
 }
 </style>
 

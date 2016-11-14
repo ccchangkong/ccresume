@@ -44,22 +44,41 @@ export default {
 </script>
 
 <style>
-body{
-  font-family: "Helvetica Neue",Helvetica,"PingFang SC","Hiragino Sans GB","Microsoft YaHei","微软雅黑",Arial,sans-serif;
+body {
+    font-family: "Helvetica Neue", Helvetica, "PingFang SC", "Hiragino Sans GB", "Microsoft YaHei", "微软雅黑", Arial, sans-serif;
 }
+
 #app {
     width: 1200px;
     margin: auto;
     font-size: 0;
     box-shadow: 0 0 5px #333;
 }
-p{
-  font-size: 10px;
+
+p {
+    font-size: 10px;
 }
-#app .el-input__inner,#app .el-input-group__prepend{
-  border: none;
-   background-color: transparent;
-   text-align: center;
-   font-size: 1.4em;
+
+#app .el-input__inner,
+#app .el-input-group__prepend {
+    border-top: none;
+    border-left: none;
+    border-right: none;
+    background-color: transparent;
+    text-align: center;
+    font-size: 1.4em;
+}
+
+#app .el-date-editor__editor {
+    background-color: transparent;
+    border-top: none;
+    border-left: none;
+    border-right: none;
+}
+#app .el-card{
+background-color: rgba(256,256,256,0.9);
+margin: 10px;
+margin-top: auto;
 }
 </style>
+
