@@ -28,13 +28,13 @@
       <el-button style="float: right;" type="primary" icon="plus">添加</el-button>
     </div>
     <i class="el-icon-setting s-set" @click="open('设置什么呢')"></i>
+    <i class="el-icon-picture" @click="photo()"></i>
+    <a :href="dws" id="dw" download="myjobdeer.png"><i class="el-icon-picture"></i></a>
+    <input type="file"> </div>
   </div>
 </template>
-
-
-
-
 <script>
+import Html2canvas from 'html2canvas'
 export default {
   name: 'sidebar',
   data () {
@@ -48,7 +48,8 @@ export default {
           js: 5,
           css: 5,
           html: 5
-        }
+        },
+        dws: ''
       }
     }
   },
@@ -57,6 +58,11 @@ export default {
       this.$message({
         message: msg,
         duration: 1000
+      })
+    },
+    photo () {
+      Html2canvas(document.getElementById('app')).then(function (canvas) {
+        document.getElementById('dw').href = canvas.toDataURL()
       })
     }
   }
@@ -114,5 +120,8 @@ export default {
   position: absolute;
   bottom: 80px;
   left: 50px;
+}
+.el-icon-picture{
+  font-size: 20px;
 }
 </style>
