@@ -58,7 +58,7 @@
         <el-input placeholder="描述" v-model="value6"></el-input>
       </div>
     </el-card>
-    <el-button style="float: right;" type="primary" icon="plus">添加</el-button>
+    <el-button style="float: right;" type="primary" icon="plus" @click="onInput">添加</el-button>
   </div>
 </template>
 
@@ -70,7 +70,7 @@ export default {
   props: ['valuess'],
   methods: {
     onInput: function () {
-      this.$emit('onInput')
+      this.$emit('onInput', this.value6)
     }
   },
   data () {
@@ -78,7 +78,7 @@ export default {
       pickerOptions0: {
       },
       value1: '',
-      value2: ''
+      value6: ''
     }
   }
 }

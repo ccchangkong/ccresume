@@ -1,5 +1,6 @@
 <template>
   <div class="sidebar" id="sidebar">
+  <p>{{ ps}}</p>
     <img src="../img/avatar.jpg" alt="" class="avatar" :plain="true" @click="open('点我也没啥用啦')">
     <div class="s-core">
       <el-input placeholder="请输入内容" v-model="cdate.name">
@@ -25,21 +26,27 @@
         <el-input placeholder="技能3" class='s-skils-title'></el-input>
         <el-rate v-model="cdate.skils.css" class='s-skils-rate'></el-rate>
       </div>
-      <el-button style="float: right;" type="primary" icon="plus">添加</el-button>
+      <el-button type="primary" icon="plus">添加</el-button>
     </div>
     <i class="el-icon-setting s-set" @click="open('设置什么呢')"></i>
-    <i class="el-icon-picture" @click="photo()"></i>
-    <a :href="dws" id="dw" download="myjobdeer.png"><i class="el-icon-picture"></i></a>
-    <input type="file"> </div>
+    <div class="d-pic">
+      <el-button type="primary" icon="picture" @click="photo()">生成图片</el-button>
+      <a :href="spic" id="dw" download="my.png">
+        <el-button type="primary" icon="picture">下载图片</el-button>
+      </a>
+      <input type="file">
+    </div>
   </div>
 </template>
+
+
 <script>
 import Html2canvas from 'html2canvas'
 export default {
   name: 'sidebar',
   data () {
     return {
-      // msg: '你的大名'
+      msg: '你的大名',
       cdate: {
         name: '你的大名',
         offer: '职务',
@@ -48,9 +55,9 @@ export default {
           js: 5,
           css: 5,
           html: 5
-        },
-        dws: ''
-      }
+        }
+      },
+      spic: '22'
     }
   },
   methods: {
@@ -61,9 +68,15 @@ export default {
       })
     },
     photo () {
+      let self = this
       Html2canvas(document.getElementById('app')).then(function (canvas) {
-        document.getElementById('dw').href = canvas.toDataURL()
+        self.spic = canvas.toDataURL()
       })
+    }
+  },
+  computed: {
+    ps: function () {
+      return this.msg
     }
   }
 }
@@ -74,7 +87,7 @@ export default {
   .sidebar{
     width: 25%;
     min-height: 100vh;
-    background-color: #1D8CE0;
+    background-color: #20A0FF;
     color: #fff;
     vertical-align: top;
     transition: .5s;
@@ -84,7 +97,7 @@ export default {
 
   }
   .sidebar:hover{
-    background-color: #20A0FF;
+    background-color: #1D8CE0;
 
   }
   .avatar{

@@ -22,14 +22,15 @@ export default {
     Subject
   },
   methods: {
-    onInputs: function () {
-      this.values += 1
-      var data = {
-        value: this.values,
-        time: window.Date.now()
-      }
-      this.resume.push(data)
-      console.log(this.values)
+    onInputs: function (vl) {
+      // this.values += 1
+      // var data = {
+      //   value: this.values,
+      //   time: window.Date.now()
+      // }
+      // this.resume.push(data)
+      // console.log(this.values)
+      window.alert(vl)
     }
   },
   watch: {
