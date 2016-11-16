@@ -64,11 +64,11 @@
                 <h2>自我评价</h2>
             </div>
             <div class="block">
-                <el-input type="textarea" :autosize="{ minRows: 2, maxRows: 4}" placeholder="请输入内容" v-model="value6">
+                <el-input type="textarea" :autosize="{ minRows: 2, maxRows: 4}" placeholder="请输入内容" v-model="value6" @change='onInput(value6)'>
                 </el-input>
             </div>
         </el-card>
-        <el-button style="float: right;" type="primary" icon="plus" @click="onInput">添加</el-button>
+        <el-button style="float: right;" type="primary" icon="plus" @click="onInput(value1)">添加</el-button>
     </div>
 </template>
 
@@ -80,8 +80,8 @@ export default {
   name: 'subject',
   props: ['valuess'],
   methods: {
-    onInput: function () {
-      this.$emit('onInput', this.value6)
+    onInput: function (vl) {
+      this.$emit('onInput', vl)
     }
   },
   data () {

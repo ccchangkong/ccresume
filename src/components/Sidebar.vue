@@ -36,6 +36,9 @@
       </a>
       <input type="file">
     </div>
+    <div v-for="(value, key) in cdate">
+  {{ key }} : {{ value }}
+</div>
   </div>
 </template>
 
