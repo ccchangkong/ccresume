@@ -30,7 +30,8 @@ export default {
       // }
       // this.resume.push(data)
       // console.log(this.values)
-      window.alert(vl)
+      // window.alert(vl)
+      this.values = vl
     }
   },
   watch: {
