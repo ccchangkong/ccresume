@@ -1,66 +1,39 @@
 <template>
   <div class="sidebar" id="sidebar">
-  <p>{{ ps}}</p>
     <img src="../img/avatar.jpg" alt="" class="avatar" :plain="true" @click="open('点我也没啥用啦')">
-    <div class="s-core">
-      <el-input placeholder="请输入内容" v-model="cdate.name">
-        <template slot="prepend">姓名</template>
-      </el-input>
-      <el-input placeholder="请输入内容" v-model="cdate.offer">
-        <template slot="prepend">职务</template>
-      </el-input>
-      <el-input placeholder="请输入内容" v-model="cdate.link">
-        <template slot="prepend">联系方式</template>
+    <div class="s-core" v-for="(value, key) in sCore" :value='value' :key='key'>
+      <el-input :placeholder="value">
+        <template slot="prepend">{{key}}</template>
       </el-input>
     </div>
-    <div class="s-skils">
+    <div class="s-skils" v-for="item in sSkils">
       <div class="s-skils-box">
-        <el-input placeholder="技能1" class='s-skils-title'></el-input>
-        <el-rate v-model="cdate.skils.js" class='s-skils-rate'></el-rate>
+        <el-input :placeholder="item.name" class='s-skils-title'></el-input>
+        <el-rate v-model="item.skil" class='s-skils-rate'></el-rate>
       </div>
-      <div class="s-skils-box">
-        <el-input placeholder="技能2" class='s-skils-title'></el-input>
-        <el-rate v-model="cdate.skils.html" class='s-skils-rate'></el-rate>
-      </div>
-      <div class="s-skils-box">
-        <el-input placeholder="技能3" class='s-skils-title'></el-input>
-        <el-rate v-model="cdate.skils.css" class='s-skils-rate'></el-rate>
-      </div>
-      <el-button type="primary" icon="plus">添加</el-button>
     </div>
+    <el-button type="primary" icon="plus">添加</el-button>
     <i class="el-icon-setting s-set" @click="open('设置什么呢')"></i>
     <div class="d-pic">
       <el-button type="primary" icon="picture" @click="photo()">生成图片</el-button>
       <a :href="spic" id="dw" download="my.png">
         <el-button type="primary" icon="picture">下载图片</el-button>
       </a>
-      <input type="file">
     </div>
-    <div v-for="(value, key) in cdate">
-  {{ key }} : {{ value }}
-</div>
   </div>
 </template>
+
+
 
 
 <script>
 import Html2canvas from 'html2canvas'
 export default {
   name: 'sidebar',
+  props: ['sCore', 'sSkils'],
   data () {
     return {
-      msg: '你的大名',
-      cdate: {
-        name: '你的大名',
-        offer: '职务',
-        link: '联系方式',
-        skils: {
-          js: 5,
-          css: 5,
-          html: 5
-        }
-      },
-      spic: '22'
+      spic: ''
     }
   },
   methods: {
@@ -74,12 +47,9 @@ export default {
       let self = this
       Html2canvas(document.getElementById('app')).then(function (canvas) {
         self.spic = canvas.toDataURL()
+      }).then(function () {
+        document.getElementById('dw').click()
       })
-    }
-  },
-  computed: {
-    ps: function () {
-      return this.msg
     }
   }
 }
