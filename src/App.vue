@@ -1,7 +1,7 @@
 <template>
   <div id="app">
-    <sidebar :sCore="resume.core" :sSkils='resume.skils'></sidebar>
-    <subject :valuess="values" :sExp='resume.exp' :sCustom='resume.custom' @onInput="onInputs"></subject>
+    <sidebar :sCore="resume.core" :sSkils='resume.skils' @sAdd="add" @sDel='del'></sidebar>
+    <subject :sExp='resume.exp' :sCustom='resume.custom' @sAdd="add"></subject>
   </div>
 </template>
 <script>
@@ -11,28 +11,25 @@ export default {
   name: 'app',
   data () {
     return {
-      values: 3,
-      // resume: JSON.parse(window.localStorage.getItem('resume')) || {}
-      resume: {
-        core: {
-          name: 'cc',
-          job: 'f2er',
-          tel: '110',
-          profile: '萌新'
-        },
+      resume: JSON.parse(window.localStorage.getItem('resume')) || {
+        core: [
+          {name: 'name', value: ''},
+          {name: 'job', value: ''},
+          {name: 'tel', value: ''},
+          {name: 'profile', value: ''}
+        ],
         skils: [
-          {name: 'js', skil: 1},
-          {name: 'css', skil: 4},
-          {name: 'html', skil: 5}
+          {name: 'name', skil: 1},
+          {name: 'name', skil: 2},
+          {name: 'name', skil: 3}
         ],
         exp: [
-          {name: '工作经历', startTime: '2016-10-03', endTime: '2016-11-03', company: 'bat', job: 'f2er', exps: 'ssssssss'},
-          {name: '教育经历', startTime: '2016-10-03', endTime: '2016-11-03', company: 'bat', job: 'f2er', exps: 'ssssssss'},
-          {name: '项目经历', startTime: '2016-10-03', endTime: '2016-11-03', company: 'bat', job: 'f2er', exps: 'ssssssss'}
+          {name: '工作经历', startTime: '', endTime: '', company: '', job: '', exps: ''},
+          {name: '教育经历', startTime: '', endTime: '', company: '', job: '', exps: ''},
+          {name: '项目经历', startTime: '', endTime: '', company: '', job: '', exps: ''}
         ],
         custom: [
-          {name: '自我评价', exps: 'naive'},
-          {name: '项目经历', exps: 'ssssssss2'}
+          {name: '自我评价', exps: ''}
         ]
       }
     }
@@ -42,25 +39,48 @@ export default {
     Subject
   },
   methods: {
-    onInputs: function (vl) {
-      // this.values += 1
-      // var data = {
-      //   value: this.values,
-      //   time: window.Date.now()
-      // }
-      // this.resume.push(data)
+    add: function (vl, type) {
+      this.resume[type].push(vl)
+      // window.localStorage.setItem('resume', window.JSON.stringify(this.resume))
+    },
+    del: function (vl, type) {
+      this.resume[type].splice(vl, 1)
+    },
+    change: function () {
+      window.localStorage.setItem('resume', window.JSON.stringify(this.resume))
     }
   },
   watch: {
     resume: {
       handler: function (resume) {
-        // window.alert(window.JSON.stringify(resume))
         window.localStorage.setItem('resume', window.JSON.stringify(resume))
       },
       deep: true
     }
   }
 }
+// resume: {
+//   core: [
+//     {name: 'name', value: 'cc'},
+//     {name: 'job', value: 'f2er'},
+//     {name: 'tel', value: '110'},
+//     {name: 'profile', value: '萌新'}
+//   ],
+//   skils: [
+//     {name: 'js', skil: 1},
+//     {name: 'css', skil: 4},
+//     {name: 'html', skil: 5}
+//   ],
+//   exp: [
+//     {name: '工作经历', startTime: '2016-10-03', endTime: '2016-11-03', company: 'bat', job: 'f2er', exps: 'ssssssss'},
+//     {name: '教育经历', startTime: '2016-10-03', endTime: '2016-11-03', company: 'bat', job: 'f2er', exps: 'ssssssss'},
+//     {name: '项目经历', startTime: '2016-10-03', endTime: '2016-11-03', company: 'bat', job: 'f2er', exps: 'ssssssss'}
+//   ],
+//   custom: [
+//     {name: '自我评价', exps: 'naive'},
+//     {name: '项目经历', exps: 'ssssssss2'}
+//   ]
+// }
 </script>
 
 <style>
