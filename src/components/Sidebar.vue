@@ -45,7 +45,7 @@ export default {
   },
   methods: {
     sAdd: function (vl, type) {
-      this.$emit('sAdd', vl, type)
+      this.$emit('sAdd', { name: vl.name, skil: vl.skil }, type)
     },
     sDel: function (vl, type) {
       this.$emit('sDel', vl, type)
