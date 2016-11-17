@@ -1,34 +1,31 @@
 <template>
-    <div class="sidebar" id="sidebar">
-        <img src="../img/avatar.jpg" alt="" class="avatar" :plain="true" @click="open('点我也没啥用啦')">
-        <div class="s-core" v-for="item in sCore">
-            <el-input placeholder="" v-model='item.value'>
-                <template slot="prepend">{{item.name}}</template>
-            </el-input>
-        </div>
-        <div class="s-skils" v-for="(item, index) in sSkils">
+  <div class="sidebar" id="sidebar">
+    <img src="../img/avatar.jpg" alt="" class="avatar" :plain="true" @click="open('点我也没啥用啦')">
+    <div class="s-core" v-for="item in sCore">
+      <el-input placeholder="" v-model='item.value'>
+        <template slot="prepend">{{item.name}}</template>
+      </el-input>
+    </div>
+    <div class="s-skils" v-for="(item, index) in sSkils">
       <div class="s-skils-box">
         <el-input v-model="item.name" class='s-skils-title'></el-input>
         <el-rate v-model="item.skil" class='s-skils-rate'></el-rate>
-        <el-button type="primary"  @click="sDel(index,'skils')">删除</el-button>
+        <el-button type="primary" @click="sDel(index,'skils')">删除</el-button>
       </div>
     </div>
-        <el-input class='s-skils-title' v-model='addValue.name'></el-input>
-        <el-input class='s-skils-title' v-model='addValue.skil'></el-input>
-        <el-button type="primary" icon="plus" @click="sAdd(addValue, 'skils')">添加</el-button>
-
-        <div class="d-pic">
-            <el-button type="primary" icon="picture" @click="photo()">生成图片</el-button>
-            <a :href="spic" id="dw" download="my.png">
-                <el-button type="primary" icon="picture">下载图片</el-button>
-            </a>
-        </div>
-                <i class="el-icon-delete" style="font-size: 26px;" @click="open('设置什么呢')"></i>
-        <i class="el-icon-setting s-set" @click="open('设置什么呢')"></i>
+    <el-input class='s-skils-title' v-model='addValue.name'></el-input>
+    <el-input class='s-skils-title' v-model='addValue.skil'></el-input>
+    <el-button type="primary" icon="plus" @click="sAdd(addValue, 'skils')">添加</el-button>
+    <div class="d-pic">
+      <el-button type="primary" icon="picture" @click="photo()">生成图片</el-button>
+      <a :href="spic" id="dw" download="my.png">
+        <el-button type="primary" icon="picture">下载图片</el-button>
+      </a>
     </div>
+    <i class="el-icon-delete" style="font-size: 26px;" @click="sClear()"></i>
+    <i class="el-icon-setting s-set" @click="open('设置什么呢')"></i>
+  </div>
 </template>
-
-
 
 
 
@@ -53,6 +50,9 @@ export default {
     sDel: function (vl, type) {
       this.$emit('sDel', vl, type)
     },
+    sClear: function () {
+      this.$emit('sClear')
+    },
     open (msg) {
       this.$message({
         message: msg,
@@ -61,9 +61,11 @@ export default {
     },
     photo () {
       let self = this
+      document.body.scrollTop = 0
       Html2canvas(document.getElementById('app')).then(function (canvas) {
         self.spic = canvas.toDataURL()
-      }).then(function () {
+      })
+      .then(function () {
         document.getElementById('dw').click()
       })
     }

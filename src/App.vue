@@ -1,6 +1,6 @@
 <template>
   <div id="app">
-    <sidebar :sCore="resume.core" :sSkils='resume.skils' @sAdd="add" @sDel='del'></sidebar>
+    <sidebar :sCore="resume.core" :sSkils='resume.skils' @sAdd="add" @sDel='del' @sClear='clear'></sidebar>
     <subject :sExp='resume.exp' :sCustom='resume.custom' @sAdd="add"></subject>
   </div>
 </template>
@@ -46,8 +46,29 @@ export default {
     del: function (vl, type) {
       this.resume[type].splice(vl, 1)
     },
-    change: function () {
-      window.localStorage.setItem('resume', window.JSON.stringify(this.resume))
+    clear: function () {
+      window.localStorage.removeItem('resume')
+      this.resume = {
+        core: [
+          {name: 'name', value: ''},
+          {name: 'job', value: ''},
+          {name: 'tel', value: ''},
+          {name: 'profile', value: ''}
+        ],
+        skils: [
+          {name: 'name', skil: 1},
+          {name: 'name', skil: 2},
+          {name: 'name', skil: 3}
+        ],
+        exp: [
+          {name: '工作经历', startTime: '', endTime: '', company: '', job: '', exps: ''},
+          {name: '教育经历', startTime: '', endTime: '', company: '', job: '', exps: ''},
+          {name: '项目经历', startTime: '', endTime: '', company: '', job: '', exps: ''}
+        ],
+        custom: [
+          {name: '自我评价', exps: ''}
+        ]
+      }
     }
   },
   watch: {
