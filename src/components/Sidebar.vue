@@ -45,7 +45,11 @@ export default {
   },
   methods: {
     sAdd: function (vl, type) {
-      this.$emit('sAdd', { name: vl.name, skil: vl.skil }, type)
+      let vls = {}
+      for (let i in vl) {
+        vls[i] = vl[i]
+      }
+      this.$emit('sAdd', vls, type)
     },
     sDel: function (vl, type) {
       this.$emit('sDel', vl, type)
