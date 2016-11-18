@@ -1,29 +1,26 @@
 <template>
   <div class="sidebar" id="sidebar">
-    <img src="../img/avatar.jpg" alt="" class="avatar" :plain="true" @click="open('点我也没啥用啦')">
+    <img src="../img/avatar.jpg" alt="" class="avatar" :plain="true">
+    
     <div class="s-core" v-for="item in sCore">
-      <el-input placeholder="" v-model='item.value'>
-        <template slot="prepend">{{item.name}}</template>
-      </el-input>
+    <mu-text-field :label="item.name" labelFloat v-model='item.value'/>
     </div>
     <div class="s-skils" v-for="(item, index) in sSkils">
       <div class="s-skils-box">
-        <el-input v-model="item.name" class='s-skils-title'></el-input>
-        <el-rate v-model="item.skil" class='s-skils-rate'></el-rate>
-        <el-button type="primary" @click="sDel(index,'skils')">删除</el-button>
+      <mu-text-field  v-model='item.name'/>
+      <mu-slider v-model="item.skil" :step="10" class=""/>
+      <mu-icon-button icon="delete" @click="sDel(index,'skils')"/>  
       </div>
     </div>
-    <el-input class='s-skils-title' v-model='addValue.name'></el-input>
-    <el-input class='s-skils-title' v-model='addValue.skil'></el-input>
-    <el-button type="primary" icon="plus" @click="sAdd(addValue, 'skils')">添加</el-button>
+    <mu-text-field label="name" labelFloat v-model='addValue.name'/>
+    <mu-text-field label="skils" labelFloat v-model='addValue.skil'/>
+    <mu-flat-button label="添加"  @click="sAdd(addValue, 'skils')" />
     <div class="d-pic">
-      <el-button type="primary" icon="picture" @click="photo()">生成图片</el-button>
-      <a :href="spic" id="dw" download="my.png">
-        <el-button type="primary" icon="picture">下载图片</el-button>
-      </a>
+      <mu-float-button icon="add_a_photo" mini class=""label="生成图片" @click="photo()"/>
+      <a :href="spic" id="dw" download="my.png"></a>
     </div>
     <i class="el-icon-delete" style="font-size: 26px;" @click="sClear()"></i>
-    <i class="el-icon-setting s-set" @click="open('设置什么呢')"></i>
+    <mu-float-button icon="settings" mini />
   </div>
 </template>
 
@@ -56,12 +53,6 @@ export default {
     },
     sClear: function () {
       this.$emit('sClear')
-    },
-    open (msg) {
-      this.$message({
-        message: msg,
-        duration: 1000
-      })
     },
     photo () {
       let self = this
@@ -96,15 +87,15 @@ export default {
 
   }
   .avatar{
-	 border-radius: 50%;
-	 display: block;
-	 margin: 20px auto;
+   border-radius: 50%;
+   display: block;
+   margin: 20px auto;
    box-shadow: 0 0 5px #ddd;
-	 transition: .5s;
+   transition: .5s;
   }
   .avatar:hover{
-	 box-shadow: 0 0 15px #fff;
-	/*transform: scale(1.05);*/
+   box-shadow: 0 0 15px #fff;
+  /*transform: scale(1.05);*/
 }
 .el-icon-setting{
   font-size: 26px;
@@ -128,9 +119,6 @@ export default {
   position: absolute;
   bottom: 80px;
   left: 50px;
-}
-.el-icon-picture{
-  font-size: 20px;
 }
 #dw{
   display: none;

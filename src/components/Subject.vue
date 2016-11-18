@@ -1,38 +1,37 @@
 <template>
   <div class="subject">
-    <div class="card-ul" v-for="item in sExp">
-      <el-card class="box-card">
-        <div slot="header" class="clearfix">
-          <h2>{{item.name}}</h2>
-          <el-button style="float: right;" type="primary" icon="plus">添加</el-button>
-        </div>
-        <div class="block">
-          <el-date-picker v-model="item.startTime" type="date" placeholder="选择日期" :picker-options="pickerOptions0">
-          </el-date-picker>
-          <el-date-picker v-model="item.endTime" type="date" placeholder="选择日期" :picker-options="pickerOptions0">
-          </el-date-picker>
-          <el-input placeholder="请输入内容" v-model="item.company">
-            <template slot="prepend">公司</template>
-          </el-input>
-          <el-input placeholder="请输入内容" v-model="item.job">
-            <template slot="prepend">职务</template>
-          </el-input>
-          <el-input placeholder="描述" v-model="item.exps"></el-input>
-        </div>
-      </el-card>
-    </div>
+<div class="card-ul" v-for="item in sExp">
+  <mu-card>
+    <mu-card-title :title="item.name" subTitle="Content Title" />
+    <mu-card-text>
+      <mu-date-picker container="inline" mode="landscape" hintText="选择日期" v-model="item.startTime" />
+      <mu-date-picker container="inline" mode="landscape" hintText="选择日期" v-model="item.endTime" />
+      <mu-text-field label="公司" labelFloat v-model='item.company' />
+      <mu-text-field label="职务" labelFloat v-model='item.job' />
+      <mu-text-field label="描述" labelFloat v-model='item.exps' />
+    </mu-card-text>
+    <mu-card-actions>
+      <mu-flat-button label="添加" />
+      <mu-flat-button label="删除" />
+    </mu-card-actions>
+  </mu-card>
+</div>
+
     <div class="custom-ul" v-for="item in sCustom">
-      <el-card class="box-card">
-        <div slot="header" class="clearfix">
-          <h2>{{item.name}}</h2>
-        </div>
-        <div class="block">
-          <el-input type="textarea" :autosize="{ minRows: 2, maxRows: 4}" placeholder="请输入内容" v-model="item.exps">
-          </el-input>
-        </div>
-    </div>
-    </el-card>
-    <el-button style="float: right;" type="primary" icon="plus" @click="sAdd(value1)">添加</el-button>
+
+      <mu-card>
+    <mu-card-title :title="item.name" subTitle="Content Title" />
+    <mu-card-text>
+      <mu-text-field label="描述" labelFloat v-model='item.exps' multiLine :rows="3" :rowsMax="6"/>
+    </mu-card-text>
+    <mu-card-actions>
+      <mu-flat-button label="添加" />
+      <mu-flat-button label="删除" />
+    </mu-card-actions>
+  </mu-card>
+ </div>
+    <!-- <mu-flat-button label="添加"  @click="sAdd(addValue, 'skils')" /> -->
+    <mu-flat-button label="添加" @click="sAdd(value1)" />
   </div>
 </template>
 
@@ -73,7 +72,6 @@ export default {
   background-color: #ddd;
   color: #333;
   transition: .5s;
-  font-size: 1.5em;
   padding: 20px 10px;
   box-sizing:border-box;
 }
