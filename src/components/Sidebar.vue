@@ -12,15 +12,20 @@
       <mu-icon-button icon="delete" @click="sDel(index,'skils')"/>  
       </div>
     </div>
+   <mu-raised-button label="添加技能" @click="open"/>
+    <mu-dialog v-if="dialog" title="添加技能" @close="close">
     <mu-text-field label="name" labelFloat v-model='addValue.name'/>
     <mu-text-field label="skils" labelFloat v-model='addValue.skil'/>
-    <mu-flat-button label="添加"  @click="sAdd(addValue, 'skils')" />
+    <mu-flat-button slot="actions" @click="close" primary label="取消"/>
+    <mu-flat-button slot="actions" keyboardFocused primary @click="sAdd(addValue, 'skils')" label="确定"/>
+  </mu-dialog>
+
     <div class="d-pic">
       <mu-float-button icon="add_a_photo" mini class=""label="生成图片" @click="photo()"/>
       <a :href="spic" id="dw" download="my.png"></a>
-    </div>
-    <i class="el-icon-delete" style="font-size: 26px;" @click="sClear()"></i>
-    <mu-float-button icon="settings" mini />
+      <mu-float-button icon="settings" mini />
+      <mu-float-button icon="delete_forever" mini @click="sClear()"/>
+    </div>   
   </div>
 </template>
 
@@ -34,6 +39,7 @@ export default {
   data () {
     return {
       spic: '',
+      dialog: false,
       addValue: {
         name: '',
         skil: ''
@@ -42,9 +48,11 @@ export default {
   },
   methods: {
     sAdd: function (vl, type) {
+      this.dialog = false
       let vls = {}
       for (let i in vl) {
         vls[i] = vl[i]
+        vl[i] = ''
       }
       this.$emit('sAdd', vls, type)
     },
@@ -63,6 +71,12 @@ export default {
       .then(function () {
         document.getElementById('dw').click()
       })
+    },
+    open () {
+      this.dialog = true
+    },
+    close () {
+      this.dialog = false
     }
   }
 }
