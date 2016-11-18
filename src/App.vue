@@ -105,14 +105,14 @@ export default {
 </script>
 
 <style>
-body {
+/*body {
   font-family: "Helvetica Neue", Helvetica, "PingFang SC", "Hiragino Sans GB", "Microsoft YaHei", "微软雅黑", Arial, sans-serif;
-}
+}*/
 
 #app {
   width: 1200px;
   margin: auto;
-  font-size: 0;
+  /*font-size: 0;*/
   box-shadow: 0 0 5px #333;
   display: flex;
 }
