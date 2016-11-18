@@ -36,7 +36,11 @@
       </mu-card>
     </div>
     <!-- <mu-flat-button label="添加"  @click="sAdd(addValue, 'skils')" /> -->
-    <mu-flat-button label="添加" @click="sAdd(value1)" />
+    <mu-flat-button label="新建卡片" @click="open" />
+    <mu-dialog v-if="dialog" title="新建卡片" @close="close">
+    <mu-flat-button slot="actions" @click="close" primary label="取消"/>
+    <mu-flat-button slot="actions" keyboardFocused primary @click="close" label="确定"/>
+  </mu-dialog>
   </div>
 </template>
 
@@ -54,12 +58,17 @@ export default {
   methods: {
     sAdd: function (vl) {
       this.$emit('sAdd', vl)
+    },
+    open () {
+      this.dialog = true
+    },
+    close () {
+      this.dialog = false
     }
   },
   data () {
     return {
-      pickerOptions0: {
-      },
+      dialog: false,
       value1: {
         name: '',
         skil: 5

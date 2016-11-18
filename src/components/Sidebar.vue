@@ -13,7 +13,7 @@
       </div>
     </div>
    <mu-raised-button label="添加技能" @click="open"/>
-    <mu-dialog v-if="dialog" title="添加技能" @close="close">
+   <mu-dialog v-if="dialog" title="添加技能" @close="close">
     <mu-text-field label="name" labelFloat v-model='addValue.name'/>
     <mu-text-field label="skils" labelFloat v-model='addValue.skil'/>
     <mu-flat-button slot="actions" @click="close" primary label="取消"/>
