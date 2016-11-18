@@ -19,14 +19,19 @@ export default {
           {name: 'profile', value: ''}
         ],
         skils: [
-          {name: 'name', skil: 1},
-          {name: 'name', skil: 2},
-          {name: 'name', skil: 3}
+          {name: 'name', skil: 10},
+          {name: 'name', skil: 22},
+          {name: 'name', skil: 30}
         ],
         exp: [
-          {name: '工作经历', startTime: '', endTime: '', company: '', job: '', exps: ''},
-          {name: '教育经历', startTime: '', endTime: '', company: '', job: '', exps: ''},
-          {name: '项目经历', startTime: '', endTime: '', company: '', job: '', exps: ''}
+          // {name: '工作经历', startTime: '', endTime: '', company: '', job: '', exps: ''},
+          // {name: '教育经历', startTime: '', endTime: '', company: '', job: '', exps: ''},
+          {name: '项目经历',
+            exp: [
+            // {startTime: '', endTime: '', company: '', job: '', exps: ''},
+            {startTime: '', endTime: '', company: '', job: '', exps: '22'}
+            ]
+          }
         ],
         custom: [
           {name: '自我评价', exps: ''}
@@ -40,14 +45,22 @@ export default {
   },
   methods: {
     add: function (vl, type) {
-      this.resume[type].push(vl)
-      // window.localStorage.setItem('resume', window.JSON.stringify(this.resume))
+      let vls = {}
+      for (let i in vl) {
+        vls[i] = vl[i]
+        vl[i] = ''
+      }
+      this.resume[type].push(vls)
     },
     del: function (vl, type) {
       this.resume[type].splice(vl, 1)
     },
     clear: function () {
+      // window.alert(this.resume['exp'][0]['exp'][0].exps)
       window.localStorage.removeItem('resume')
+      this.reset()
+    },
+    reset: function () {
       this.resume = {
         core: [
           {name: 'name', value: ''},
@@ -56,14 +69,25 @@ export default {
           {name: 'profile', value: ''}
         ],
         skils: [
-          {name: 'name', skil: 1},
-          {name: 'name', skil: 2},
-          {name: 'name', skil: 3}
+          {name: 'name', skil: 10},
+          {name: 'name', skil: 22},
+          {name: 'name', skil: 33}
         ],
         exp: [
-          {name: '工作经历', startTime: '', endTime: '', company: '', job: '', exps: ''},
-          {name: '教育经历', startTime: '', endTime: '', company: '', job: '', exps: ''},
-          {name: '项目经历', startTime: '', endTime: '', company: '', job: '', exps: ''}
+          {name: '项目经历',
+            exp: [
+            {startTime: '', endTime: '', company: '', job: '', exps: '1'},
+            {startTime: '', endTime: '', company: '', job: '', exps: '2'},
+            {startTime: '', endTime: '', company: '', job: '', exps: '3'}
+            ]
+          },
+          {name: '教育经历',
+            exp: [
+            {startTime: '', endTime: '', company: '', job: '', exps: '1'},
+            {startTime: '', endTime: '', company: '', job: '', exps: '2'},
+            {startTime: '', endTime: '', company: '', job: '', exps: '3'}
+            ]
+          }
         ],
         custom: [
           {name: '自我评价', exps: ''}

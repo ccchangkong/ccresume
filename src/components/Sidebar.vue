@@ -1,7 +1,7 @@
 <template>
   <div class="sidebar" id="sidebar">
     <img src="../img/avatar.jpg" alt="" class="avatar" :plain="true">
-    
+
     <div class="s-core" v-for="item in sCore">
     <mu-text-field :label="item.name" labelFloat v-model='item.value'/>
     </div>
@@ -9,7 +9,7 @@
       <div class="s-skils-box">
       <mu-text-field  v-model='item.name'/>
       <mu-slider v-model="item.skil" :step="10" class=""/>
-      <mu-icon-button icon="delete" @click="sDel(index,'skils')"/>  
+      <mu-icon-button icon="delete" @click="sDel(index,'skils')"/>
       </div>
     </div>
    <mu-raised-button label="添加技能" @click="open"/>
@@ -25,7 +25,7 @@
       <a :href="spic" id="dw" download="my.png"></a>
       <mu-float-button icon="settings" mini />
       <mu-float-button icon="delete_forever" mini @click="sClear()"/>
-    </div>   
+    </div>
   </div>
 </template>
 
@@ -49,12 +49,7 @@ export default {
   methods: {
     sAdd: function (vl, type) {
       this.dialog = false
-      let vls = {}
-      for (let i in vl) {
-        vls[i] = vl[i]
-        vl[i] = ''
-      }
-      this.$emit('sAdd', vls, type)
+      this.$emit('sAdd', vl, type)
     },
     sDel: function (vl, type) {
       this.$emit('sDel', vl, type)
