@@ -1,7 +1,7 @@
 <template>
   <div id="app">
-    <sidebar :sCore="resume.core" :sSkils='resume.skils' @sAdd="add" @sDel='del' @sClear='clear'></sidebar>
-    <subject :sExp='resume.exp' :sCustom='resume.custom' @sAdd="add"></subject>
+    <sidebar :sCore="resume.core" :sSkils='resume.skils' :sAvatar='resume.avatar' @sAdd="add" @sDel='del' @sClear='clear' @changePic='change'></sidebar>
+    <subject :sExp='resume.exp' :sCustom='resume.custom' @sAdd="add" @sDel='del'></subject>
   </div>
 </template>
 <script>
@@ -19,23 +19,31 @@ export default {
           {name: 'profile', value: ''}
         ],
         skils: [
-          {name: 'name', skil: 10},
-          {name: 'name', skil: 22},
-          {name: 'name', skil: 30}
+          {name: 'JS', skil: 10},
+          {name: 'CSS', skil: 22},
+          {name: 'HTML', skil: 30}
         ],
         exp: [
-          // {name: '工作经历', startTime: '', endTime: '', company: '', job: '', exps: ''},
-          // {name: '教育经历', startTime: '', endTime: '', company: '', job: '', exps: ''},
+          {name: '工作经历',
+            exp: [
+              {startTime: '', endTime: '', company: '', job: '', exps: ''}
+            ]
+          },
+          {name: '教育经历',
+            exp: [
+              {startTime: '', endTime: '', company: '', job: '', exps: ''}
+            ]
+          },
           {name: '项目经历',
             exp: [
-            // {startTime: '', endTime: '', company: '', job: '', exps: ''},
-            {startTime: '', endTime: '', company: '', job: '', exps: '22'}
+              {startTime: '', endTime: '', company: '', job: '', exps: ''}
             ]
           }
         ],
         custom: [
           {name: '自我评价', exps: ''}
-        ]
+        ],
+        avatar: 'http://ww3.sinaimg.cn/large/6c7bfb12gw1f9xkbfmmqjj20bo0bo3zj.jpg'
       }
     }
   },
@@ -44,23 +52,34 @@ export default {
     Subject
   },
   methods: {
-    add: function (vl, type) {
+    add (vl, type, index, types) {
       let vls = {}
       for (let i in vl) {
         vls[i] = vl[i]
         vl[i] = ''
       }
-      this.resume[type].push(vls)
+      if (arguments.length === 2) {
+        this.resume[type].push(vls)
+      } else {
+        this.resume[type][index][types].push(vls)
+      }
     },
-    del: function (vl, type) {
-      this.resume[type].splice(vl, 1)
+    del (vl, type, index, types) {
+      if (arguments.length === 2) {
+        this.resume[type].splice(vl, 1)
+      } else {
+        this.resume[type][index][types].splice(vl, 1)
+      }
     },
-    clear: function () {
+    clear () {
       // window.alert(this.resume['exp'][0]['exp'][0].exps)
       window.localStorage.removeItem('resume')
       this.reset()
     },
-    reset: function () {
+    change (vl) {
+      this.resume.avatar = vl
+    },
+    reset () {
       this.resume = {
         core: [
           {name: 'name', value: ''},
@@ -71,27 +90,29 @@ export default {
         skils: [
           {name: 'name', skil: 10},
           {name: 'name', skil: 22},
-          {name: 'name', skil: 33}
+          {name: 'name', skil: 30}
         ],
         exp: [
-          {name: '项目经历',
+          {name: '工作经历',
             exp: [
-            {startTime: '', endTime: '', company: '', job: '', exps: '1'},
-            {startTime: '', endTime: '', company: '', job: '', exps: '2'},
-            {startTime: '', endTime: '', company: '', job: '', exps: '3'}
+              {startTime: '', endTime: '', company: '', job: '', exps: ''}
             ]
           },
           {name: '教育经历',
             exp: [
-            {startTime: '', endTime: '', company: '', job: '', exps: '1'},
-            {startTime: '', endTime: '', company: '', job: '', exps: '2'},
-            {startTime: '', endTime: '', company: '', job: '', exps: '3'}
+              {startTime: '', endTime: '', company: '', job: '', exps: ''}
+            ]
+          },
+          {name: '项目经历',
+            exp: [
+              {startTime: '', endTime: '', company: '', job: '', exps: ''}
             ]
           }
         ],
         custom: [
           {name: '自我评价', exps: ''}
-        ]
+        ],
+        avatar: 'http://ww3.sinaimg.cn/large/6c7bfb12gw1f9xkbfmmqjj20bo0bo3zj.jpg'
       }
     }
   },
@@ -104,28 +125,6 @@ export default {
     }
   }
 }
-// resume: {
-//   core: [
-//     {name: 'name', value: 'cc'},
-//     {name: 'job', value: 'f2er'},
-//     {name: 'tel', value: '110'},
-//     {name: 'profile', value: '萌新'}
-//   ],
-//   skils: [
-//     {name: 'js', skil: 1},
-//     {name: 'css', skil: 4},
-//     {name: 'html', skil: 5}
-//   ],
-//   exp: [
-//     {name: '工作经历', startTime: '2016-10-03', endTime: '2016-11-03', company: 'bat', job: 'f2er', exps: 'ssssssss'},
-//     {name: '教育经历', startTime: '2016-10-03', endTime: '2016-11-03', company: 'bat', job: 'f2er', exps: 'ssssssss'},
-//     {name: '项目经历', startTime: '2016-10-03', endTime: '2016-11-03', company: 'bat', job: 'f2er', exps: 'ssssssss'}
-//   ],
-//   custom: [
-//     {name: '自我评价', exps: 'naive'},
-//     {name: '项目经历', exps: 'ssssssss2'}
-//   ]
-// }
 </script>
 
 <style>
@@ -135,7 +134,12 @@ export default {
   box-shadow: 0 0 5px #333;
   display: flex;
 }
-
+#app .mu-slider-thumb {
+background-color:#fff;
+}
+#app .mu-slider-fill {
+ background-color:#fff;
+}
 </style>
 
 

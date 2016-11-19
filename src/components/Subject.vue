@@ -7,10 +7,10 @@
           <mu-card-text>
             <mu-date-picker container="inline" mode="landscape" hintText="选择日期" v-model="items.startTime" />
             <mu-date-picker container="inline" mode="landscape" hintText="选择日期" v-model="items.endTime" />
-            <mu-flat-button label="删除" /> {{index}} - {{indexs}}
+            <mu-flat-button label="删除" @click="sDel(indexs,'exp',index,'exp')"/>
             <mu-row gutter>
               <mu-col width="100" tablet="50" desktop="50">
-                <mu-text-field label="公司" labelFloat v-model='items.company' />
+                <mu-text-field label="单位" labelFloat v-model='items.company' />
               </mu-col>
               <mu-col width="100" tablet="50" desktop="50">
                 <mu-text-field label="职务" labelFloat v-model='items.job' />
@@ -21,10 +21,8 @@
         </div>
         </mu-card-text>
         <mu-card-actions>
-                  <mu-flat-button label="添加" @click="open('dialogExp')" />
-          <mu-dialog v-if="dialogExp" title="添加" @close="close('dialogExp')">
-            <mu-flat-button slot="actions" @click="close('dialogExp')" primary label="取消" />
-          </mu-dialog>
+          <mu-flat-button label="添加" @click="open('dialogExp',index)" primary/>
+           <!-- <mu-flat-button label="删除" @click="sDel(index,'exp')"/> -->
         </mu-card-actions>
       </mu-card>
     </div>
@@ -36,13 +34,19 @@
         </mu-card-text>
         <mu-card-actions>
           <!-- <mu-flat-button label="添加" /> -->
-          <mu-flat-button label="删除" />
+          <mu-flat-button label="删除" @click="sDel(index,'custom')"/>
         </mu-card-actions>
       </mu-card>
     </div>
-
-
-
+    <mu-dialog v-if="dialogExp" title="添加" @close="close('dialogExp')">
+      <mu-text-field label="标题" labelFloat v-model='addExpValue.startTime' />
+      <mu-text-field label="标题" labelFloat v-model='addExpValue.endTime' />
+      <mu-text-field label="标题" labelFloat v-model='addExpValue.company' />
+      <mu-text-field label="标题" labelFloat v-model='addExpValue.job' />
+      <mu-text-field label="标题" labelFloat v-model='addExpValue.exps' />
+      <mu-flat-button slot="actions" @click="close('dialogExp')" primary label="取消" />
+      <mu-flat-button slot="actions" keyboardFocused primary @click="sAdd(addExpValue, 'exp', 'dialogExp', dialogExpI, 'exp')" label="确定" />
+    </mu-dialog>
     <mu-flat-button label="新建卡片" @click="open('dialogCard')" />
     <mu-dialog v-if="dialogCard" title="新建卡片" @close="close('dialogCard')">
       <mu-text-field label="标题" labelFloat v-model='addCardValue.name' />
@@ -55,33 +59,55 @@
 
 
 
+
 <script>
 export default {
   name: 'subject',
   props: ['sExp', 'sCustom'],
-  methods: {
-    sAdd (vl, type, dl) {
-      this.close(dl)
-      this.$emit('sAdd', vl, type)
-    },
-    open (vl) {
-      this[vl] = true
-      // document.body.appendChild(document.querySelector('.mu-overlay'))
-    },
-    close (vl) {
-      this[vl] = false
-      this.$emit('close', 'overlay')
-      // document.body.removeChild(document.querySelector('.mu-overlay'))
-    }
-  },
   data () {
     return {
       dialogExp: false,
+      dialogExpI: 0,
       dialogCard: false,
+      addExpValue: {
+        startTime: '',
+        endTime: '',
+        company: '',
+        job: '',
+        exps: ''
+      },
       addCardValue: {
         name: '',
         exps: ''
       }
+    }
+  },
+  methods: {
+    sAdd (vl, type, dl, index, types) {
+      this.close(dl)
+      if (arguments.length === 3) {
+        this.$emit('sAdd', vl, type)
+      } else {
+        this.$emit('sAdd', vl, type, index, types)
+      }
+    },
+    sDel (vl, type, index, types) {
+      if (arguments.length === 2) {
+        this.$emit('sDel', vl, type)
+      } else {
+        this.$emit('sDel', vl, type, index, types)
+      }
+    },
+    open (vl, index) {
+      if (arguments.length === 1) {
+        this[vl] = true
+      } else {
+        this[vl] = true
+        this.dialogExpI = index
+      }
+    },
+    close (vl) {
+      this[vl] = false
     }
   }
 }
