@@ -1,43 +1,42 @@
 <template>
   <div class="subject">
-    <div class="card-ul" v-for="(item, index) in sExp">
-      <mu-card>
-        <mu-card-title :title="item.name" subTitle="Content Title" />
-        <div class="card-ul" v-for="(items, indexs) in item.exp">
-          <mu-card-text>
-            <mu-date-picker container="inline" mode="landscape" hintText="选择日期" v-model="items.startTime" />
-            <mu-date-picker container="inline" mode="landscape" hintText="选择日期" v-model="items.endTime" />
-            <mu-flat-button label="删除" @click="sDel(indexs,'exp',index,'exp')"/>
-            <mu-row gutter>
-              <mu-col width="100" tablet="50" desktop="50">
-                <mu-text-field label="单位" labelFloat v-model='items.company' />
-              </mu-col>
-              <mu-col width="100" tablet="50" desktop="50">
-                <mu-text-field label="职务" labelFloat v-model='items.job' />
-              </mu-col>
-              <mu-col width="100" tablet="100" desktop="100">
-                <mu-text-field label="描述" labelFloat v-model='items.exps' fullWidth /></mu-col>
-            </mu-row>
-        </div>
-        </mu-card-text>
-        <mu-card-actions>
-          <mu-flat-button label="添加" @click="open('dialogExp',index)" primary/>
-           <!-- <mu-flat-button label="删除" @click="sDel(index,'exp')"/> -->
-        </mu-card-actions>
-      </mu-card>
+    <div v-for="(item, index) in sExp" class="crad-ul">
+        <mu-card>
+          <mu-card-title :title="item.name" />
+          <div v-for="(items, indexs) in item.exp" class="crad-li">
+              <mu-card-text>
+                <mu-date-picker container="inline" mode="landscape" hintText="选择日期" v-model="items.startTime" />
+                <mu-date-picker container="inline" mode="landscape" hintText="选择日期" v-model="items.endTime" />
+                <mu-row gutter>
+                  <mu-col width="100" tablet="50" desktop="50">
+                    <mu-text-field label="单位" labelFloat v-model='items.company' />
+                  </mu-col>
+                  <mu-col width="100" tablet="50" desktop="50">
+                    <mu-text-field label="职务" labelFloat v-model='items.job' />
+                  </mu-col>
+                  <mu-col width="100" tablet="100" desktop="100">
+                    <mu-text-field label="描述" labelFloat v-model='items.exps' fullWidth /></mu-col>
+                </mu-row>
+                 <mu-icon-button icon="delete" label="删除" @click="sDel(indexs,'exp',index,'exp')" class='card-exp-del'/>
+              </mu-card-text>
+            </div>
+          <mu-card-actions>
+            <mu-float-button label="添加" @click="open('dialogExp',index)" primary  class='card-exp-add' mini icon="add"/>
+          </mu-card-actions>
+        </mu-card>
     </div>
     <div class="custom-ul" v-for="item in sCustom">
-      <mu-card>
-        <mu-card-title :title="item.name" subTitle="Content Title" />
+      <mu-card class='custom-li'>
+        <mu-card-title :title="item.name"/>
         <mu-card-text>
           <mu-text-field label="描述" labelFloat v-model='item.exps' multiLine :rows="3" :rowsMax="6" fullWidth />
         </mu-card-text>
         <mu-card-actions>
-          <!-- <mu-flat-button label="添加" /> -->
-          <mu-flat-button label="删除" @click="sDel(index,'custom')"/>
+          <mu-float-button label="删除" @click="sDel(index,'custom')" class='custom-del' icon='clear' mini secondary />
         </mu-card-actions>
       </mu-card>
     </div>
+        <mu-float-button label="新建卡片" @click="open('dialogCard')" class='card-add-big' icon='add'/>
     <mu-dialog v-if="dialogExp" title="添加" @close="close('dialogExp')">
       <mu-text-field label="标题" labelFloat v-model='addExpValue.startTime' />
       <mu-text-field label="标题" labelFloat v-model='addExpValue.endTime' />
@@ -47,7 +46,7 @@
       <mu-flat-button slot="actions" @click="close('dialogExp')" primary label="取消" />
       <mu-flat-button slot="actions" keyboardFocused primary @click="sAdd(addExpValue, 'exp', 'dialogExp', dialogExpI, 'exp')" label="确定" />
     </mu-dialog>
-    <mu-flat-button label="新建卡片" @click="open('dialogCard')" />
+
     <mu-dialog v-if="dialogCard" title="新建卡片" @close="close('dialogCard')">
       <mu-text-field label="标题" labelFloat v-model='addCardValue.name' />
       <mu-text-field label="描述" labelFloat v-model='addCardValue.exps' />
@@ -56,9 +55,6 @@
     </mu-dialog>
   </div>
 </template>
-
-
-
 
 <script>
 export default {
@@ -122,17 +118,60 @@ export default {
   color: #333;
   transition: .5s;
   padding: 20px 10px;
-  box-sizing:border-box;
+  box-sizing: border-box;
 }
 
 .subject:hover {
   background-color: #eee;
 }
+
+.mu-card {
+  margin-bottom: 1em;
+}
+
+
 /*.subject::-webkit-scrollbar{
   display: none;
 }*/
-.mu-card{
-  margin-bottom: 1em;
+
+.crad-li .card-exp-del,
+.crad-ul .card-exp-add,
+.custom-li .custom-del,
+.subject .card-add-big {
+  opacity: 0;
+  display: none;
+  transition: .5s;
 }
+
+.crad-li:hover .card-exp-del,
+.crad-ul:hover .card-exp-add,
+.custom-li:hover .custom-del,
+.subject:hover>.card-add-big {
+  opacity: 1;
+  display: inline-block;
+}
+
+.crad-li {
+  position: relative;
+  padding: 0 2em;
+}
+ .crad-ul .mu-card-actions{
+  padding-top: 0;
+  }
+.mu-card-actions{
+  text-align: end;
+
+}
+
+.card-exp-del {
+  top: 17px;
+  left: 0;
+  position: absolute;
+}
+
+.card-exp-add {
+  /*position: absolute;*/
+}
+
 </style>
 

@@ -1,6 +1,6 @@
 <template>
   <div id="app">
-    <sidebar :sCore="resume.core" :sSkils='resume.skils' :sAvatar='resume.avatar' @sAdd="add" @sDel='del' @sClear='clear' @changePic='change'></sidebar>
+    <sidebar :sCore="resume.core" :sSkils='resume.skils' :sAvatar='avatar' @sAdd="add" @sDel='del' @sClear='clear' @changePic='change'></sidebar>
     <subject :sExp='resume.exp' :sCustom='resume.custom' @sAdd="add" @sDel='del'></subject>
   </div>
 </template>
@@ -42,9 +42,9 @@ export default {
         ],
         custom: [
           {name: '自我评价', exps: ''}
-        ],
-        avatar: 'http://ww3.sinaimg.cn/large/6c7bfb12gw1f9xkbfmmqjj20bo0bo3zj.jpg'
-      }
+        ]
+      },
+      avatar: JSON.parse(window.localStorage.getItem('avatar')) || ''
     }
   },
   components: {
@@ -74,10 +74,11 @@ export default {
     clear () {
       // window.alert(this.resume['exp'][0]['exp'][0].exps)
       window.localStorage.removeItem('resume')
+      window.localStorage.removeItem('avatar')
       this.reset()
     },
     change (vl) {
-      this.resume.avatar = vl
+      this.avatar = vl
     },
     reset () {
       this.resume = {
@@ -111,9 +112,9 @@ export default {
         ],
         custom: [
           {name: '自我评价', exps: ''}
-        ],
-        avatar: 'http://ww3.sinaimg.cn/large/6c7bfb12gw1f9xkbfmmqjj20bo0bo3zj.jpg'
+        ]
       }
+      this.avatar = ''
     }
   },
   watch: {
@@ -122,6 +123,11 @@ export default {
         window.localStorage.setItem('resume', window.JSON.stringify(resume))
       },
       deep: true
+    },
+    avatar: {
+      handler: function (avatar) {
+        window.localStorage.setItem('avatar', window.JSON.stringify(avatar))
+      }
     }
   }
 }
