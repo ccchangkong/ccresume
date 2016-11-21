@@ -130,8 +130,8 @@ export default {
     photo () {
       let self = this
       this.showBtn = false
-      document.body.scrollTop = 0
       document.documentElement.scrollTop = 0
+      document.body.scrollTop = 0
       var myList = document.querySelectorAll('.mu-tooltip')
       Array.prototype.forEach.call(myList, function (div) {
         div.style.display = 'none'
@@ -166,7 +166,7 @@ export default {
   padding: 30px;
   box-sizing: border-box;
     background-color: #03a9f4;
-  background-image: linear-gradient(45deg, #4fc3f7, #03a9f4);
+  background-image: linear-gradient(-45deg, #4fc3f7, #03a9f4);
   background-size: 100% 200%;
   background-position:0 50%;
 }

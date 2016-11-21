@@ -21,9 +21,9 @@
                     <mu-text-field label="职务" labelFloat v-model='items.job' />
                   </mu-col>
                   <mu-col width="100" tablet="100" desktop="100">
-                    <mu-text-field label="描述" labelFloat v-model='items.exps' fullWidth  multiLine :rows="2" :rowsMax="60" class='card-text'/></mu-col>
+                    <mu-text-field label="描述" labelFloat v-model='items.exps' fullWidth  multiLine :rows="2" :rowsMax="6" class='card-text'/></mu-col>
                 </mu-row>
-                <div class="card-exp-del-box"><mu-icon-button icon="delete" label="删除" @click="sDel(indexs,'exp',index,'exp')" class='card-exp-del'/></div>                  
+                <div class="card-exp-del-box"><mu-icon-button icon="delete" label="删除" @click="sDel(indexs,'exp',index,'exp')" class='card-exp-del'/></div>
               </mu-card-text>
             </div>
           <mu-card-actions>
@@ -43,7 +43,7 @@
       </mu-card>
     </div>
     <div class="card-add-big-box">
-    <mu-float-button label="新建卡片" @click="open('dialogCard')" class='card-add-big' icon='add'/>    
+    <mu-float-button label="新建卡片" @click="open('dialogCard')" class='card-add-big' icon='add'/>
     </div>
     <mu-dialog v-if="dialogExp" title="添加" @close="close('dialogExp')">
       <mu-text-field label="标题" labelFloat v-model='addExpValue.startTime' />
@@ -125,7 +125,7 @@ export default {
   background-color: #ddd;
   color: #333;
   transition: .5s;
-  padding: 20px 10px;
+  padding: 1.5em 2em;
   box-sizing: border-box;
   position: relative;
   overflow: hidden;
@@ -136,7 +136,7 @@ export default {
 }
 
 .mu-card {
-  margin-bottom: 1em;
+  margin-bottom: 1.5em;
 }
 
 
@@ -147,10 +147,6 @@ export default {
 .subject .custom-text,
 .subject .card-text {
   height: auto;
-}
-
-.subject .mu-text-field-textarea {
-  height: auto !important;
 }
 
 .crad-li .card-exp-del,
