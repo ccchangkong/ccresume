@@ -1,12 +1,18 @@
 <template>
   <div class="subject">
+
     <div v-for="(item, index) in sExp" class="crad-ul">
         <mu-card>
           <mu-card-title :title="item.name" />
           <div v-for="(items, indexs) in item.exp" class="crad-li">
               <mu-card-text>
-                <mu-date-picker container="inline" mode="landscape" hintText="选择日期" v-model="items.startTime" />
-                <mu-date-picker container="inline" mode="landscape" hintText="选择日期" v-model="items.endTime" />
+                              <mu-row gutter>
+                  <mu-col width="100" tablet="50" desktop="50">
+                    <mu-date-picker container="inline" mode="landscape" hintText="开始日期" v-model="items.startTime" />
+                  </mu-col>
+                  <mu-col width="100" tablet="100" desktop="50">
+                      <mu-date-picker container="inline" mode="landscape" hintText="结束日期" v-model="items.endTime" />
+                </mu-row>
                 <mu-row gutter>
                   <mu-col width="100" tablet="50" desktop="50">
                     <mu-text-field label="单位" labelFloat v-model='items.company' />
@@ -15,9 +21,9 @@
                     <mu-text-field label="职务" labelFloat v-model='items.job' />
                   </mu-col>
                   <mu-col width="100" tablet="100" desktop="100">
-                    <mu-text-field label="描述" labelFloat v-model='items.exps' fullWidth /></mu-col>
+                    <mu-text-field label="描述" labelFloat v-model='items.exps' fullWidth  multiLine :rows="2" :rowsMax="60" class='card-text'/></mu-col>
                 </mu-row>
-                 <mu-icon-button icon="delete" label="删除" @click="sDel(indexs,'exp',index,'exp')" class='card-exp-del'/>
+                <div class="card-exp-del-box"><mu-icon-button icon="delete" label="删除" @click="sDel(indexs,'exp',index,'exp')" class='card-exp-del'/></div>                  
               </mu-card-text>
             </div>
           <mu-card-actions>
@@ -25,18 +31,20 @@
           </mu-card-actions>
         </mu-card>
     </div>
-    <div class="custom-ul" v-for="item in sCustom">
+          <div class="custom-ul" v-for="item in sCustom">
       <mu-card class='custom-li'>
         <mu-card-title :title="item.name"/>
         <mu-card-text>
-          <mu-text-field label="描述" labelFloat v-model='item.exps' multiLine :rows="3" :rowsMax="6" fullWidth />
+          <mu-text-field label="描述" labelFloat v-model='item.exps' multiLine :rows="2" :rowsMax="60" fullWidth class='custom-text'/>
         </mu-card-text>
         <mu-card-actions>
           <mu-float-button label="删除" @click="sDel(index,'custom')" class='custom-del' icon='clear' mini secondary />
         </mu-card-actions>
       </mu-card>
     </div>
-        <mu-float-button label="新建卡片" @click="open('dialogCard')" class='card-add-big' icon='add'/>
+    <div class="card-add-big-box">
+    <mu-float-button label="新建卡片" @click="open('dialogCard')" class='card-add-big' icon='add'/>    
+    </div>
     <mu-dialog v-if="dialogExp" title="添加" @close="close('dialogExp')">
       <mu-text-field label="标题" labelFloat v-model='addExpValue.startTime' />
       <mu-text-field label="标题" labelFloat v-model='addExpValue.endTime' />
@@ -119,6 +127,8 @@ export default {
   transition: .5s;
   padding: 20px 10px;
   box-sizing: border-box;
+  position: relative;
+  overflow: hidden;
 }
 
 .subject:hover {
@@ -134,44 +144,72 @@ export default {
   display: none;
 }*/
 
+.subject .custom-text,
+.subject .card-text {
+  height: auto;
+}
+
+.subject .mu-text-field-textarea {
+  height: auto !important;
+}
+
 .crad-li .card-exp-del,
 .crad-ul .card-exp-add,
 .custom-li .custom-del,
+.custom-li .card-exp-del,
 .subject .card-add-big {
   opacity: 0;
-  display: none;
+  /*visibility: ;*/
+  /*display: none;*/
   transition: .5s;
 }
 
 .crad-li:hover .card-exp-del,
 .crad-ul:hover .card-exp-add,
 .custom-li:hover .custom-del,
-.subject:hover>.card-add-big {
+.custom-li:hover .card-exp-del,
+.subject:hover .card-add-big {
   opacity: 1;
+  /*visibility: visible;*/
   display: inline-block;
 }
-
-.crad-li {
+.crad-li .card-exp-del{
+  display: none;
+}
+.crad-li:hover .card-exp-del{
+    display: inline-block;
+}
+.crad-li,
+.custom-li {
   position: relative;
   padding: 0 2em;
 }
- .crad-ul .mu-card-actions{
-  padding-top: 0;
-  }
-.mu-card-actions{
-  text-align: end;
 
+.crad-ul .mu-card-actions {
+  padding-top: 0;
 }
 
-.card-exp-del {
+.mu-card-actions {
+  text-align: end;
+}
+.subject .card-exp-del-box{
   top: 17px;
   left: 0;
   position: absolute;
+  height: 0;
+}
+.subject:hover .card-exp-del-box{
+  height: auto;
 }
 
-.card-exp-add {
-  /*position: absolute;*/
+.subject .card-add-big-box {
+  height: 0;
+  text-align: end;
 }
 
+.subject:hover .card-add-big-box {
+  height: auto;
+}
 </style>
+
 

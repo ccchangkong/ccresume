@@ -131,6 +131,7 @@ export default {
       let self = this
       this.showBtn = false
       document.body.scrollTop = 0
+      document.documentElement.scrollTop = 0
       var myList = document.querySelectorAll('.mu-tooltip')
       Array.prototype.forEach.call(myList, function (div) {
         div.style.display = 'none'
@@ -158,15 +159,21 @@ export default {
 .sidebar {
   width: 25%;
   min-height: 100vh;
-  background-color: #03a9f4;
   color: #fff;
   vertical-align: top;
   transition: .5s;
   position: relative;
   padding: 30px;
   box-sizing: border-box;
+    background-color: #03a9f4;
+  background-image: linear-gradient(45deg, #4fc3f7, #03a9f4);
+  background-size: 100% 200%;
+  background-position:0 50%;
 }
-
+.sidebar:hover {
+  background-color: #29b6f6;
+  background-position:0 100%;
+}
 .sidebar:hover .s-box-btn {
   opacity: 1;
 }
@@ -180,9 +187,7 @@ export default {
   display: inline-block;
   margin-right: 1em;
 }
-.sidebar:hover {
-  background-color: #29b6f6;
-}
+
 
 .avatar {
   border-radius: 100%;
@@ -195,10 +200,13 @@ export default {
   height: 210px;
   background-color: #fff;
   background-image: linear-gradient(45deg, #fdfdfd, #57afef);
+  background-size: 100% 200%;
+  background-position:0 50%;
 }
 
 .avatar:hover {
   box-shadow: 0 0 15px #fff;
+  background-position:0 100%;
 }
 
 #dw {
