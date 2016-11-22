@@ -139,12 +139,32 @@ export default {
   margin: auto;
   box-shadow: 0 0 5px #333;
   display: flex;
+
 }
 #app .mu-slider-thumb {
 background-color:#fff;
 }
 #app .mu-slider-fill {
  background-color:#fff;
+}
+html {
+  overflow-y: scroll;
+  background-color: #333;
+}
+
+:root {
+  overflow-y: auto;
+  overflow-x: hidden;
+}
+
+:root body {
+  position: absolute;
+}
+
+body {
+    padding-left: calc(100vw - 100%);
+  width: 100vw;
+  overflow: hidden;
 }
 </style>
 
