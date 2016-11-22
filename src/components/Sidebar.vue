@@ -132,21 +132,18 @@ export default {
       this.showBtn = false
       document.documentElement.scrollTop = 0
       document.body.scrollTop = 0
-      var myList = document.querySelectorAll('.mu-tooltip')
-      Array.prototype.forEach.call(myList, function (div) {
-        div.style.display = 'none'
-      })
+      // var myList = document.querySelectorAll('.mu-tooltip')
+      // Array.prototype.forEach.call(myList, function (div) {
+      //   div.style.display = 'none'
+      // })
       this.$nextTick(function () {
-        Html2canvas(document.getElementById('app'), {taintTest: false})
+        Html2canvas(document.getElementById('app'))
         .then(function (canvas) {
           self.spic = canvas.toDataURL()
         })
         .then(function () {
           document.getElementById('dw').click()
           self.showBtn = true
-          Array.prototype.forEach.call(myList, function (div) {
-            div.style.display = 'block'
-          })
         })
       })
     }

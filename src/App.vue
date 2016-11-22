@@ -13,23 +13,23 @@ export default {
     return {
       resume: JSON.parse(window.localStorage.getItem('resume')) || {
         core: [
-          {name: 'name', value: ''},
-          {name: 'job', value: ''},
-          {name: 'tel', value: ''},
-          {name: 'profile', value: ''}
+          {name: '姓名', value: ''},
+          {name: '职业', value: ''},
+          {name: '电话', value: ''},
+          {name: '简介', value: ''}
         ],
         skils: [
-          {name: 'JS', skil: 10},
-          {name: 'CSS', skil: 22},
-          {name: 'HTML', skil: 30}
+          {name: 'skilname', skil: 10},
+          {name: 'skilname', skil: 22},
+          {name: 'skilname', skil: 30}
         ],
         exp: [
-          {name: '工作经历',
+          {name: '教育经历',
             exp: [
               {startTime: '', endTime: '', company: '', job: '', exps: ''}
             ]
           },
-          {name: '教育经历',
+          {name: '工作经历',
             exp: [
               {startTime: '', endTime: '', company: '', job: '', exps: ''}
             ]
@@ -44,7 +44,40 @@ export default {
           {name: '自我评价', exps: ''}
         ]
       },
-      avatar: JSON.parse(window.localStorage.getItem('avatar')) || ''
+      avatar: JSON.parse(window.localStorage.getItem('avatar')) || '',
+      cresume: {
+        core: [
+          {name: '姓名', value: '陈亮'},
+          {name: '职业', value: '前端工程师'},
+          {name: '电话', value: '18761699850'},
+          {name: '简介', value: ''}
+        ],
+        skils: [
+          {name: 'JS', skil: 60},
+          {name: 'CSS', skil: 80},
+          {name: 'HTML', skil: 80}
+        ],
+        exp: [
+          {name: '教育经历',
+            exp: [
+              {startTime: '', endTime: '', company: '', job: '', exps: ''}
+            ]
+          },
+          {name: '工作经历',
+            exp: [
+              {startTime: '', endTime: '', company: '', job: '', exps: ''}
+            ]
+          },
+          {name: '项目经历',
+            exp: [
+              {startTime: '', endTime: '', company: '', job: '', exps: ''}
+            ]
+          }
+        ],
+        custom: [
+          {name: '自我评价', exps: ''}
+        ]
+      }
     }
   },
   components: {
@@ -83,23 +116,23 @@ export default {
     reset () {
       this.resume = {
         core: [
-          {name: 'name', value: ''},
-          {name: 'job', value: ''},
-          {name: 'tel', value: ''},
-          {name: 'profile', value: ''}
+          {name: '姓名', value: ''},
+          {name: '职业', value: ''},
+          {name: '电话', value: ''},
+          {name: '简介', value: ''}
         ],
         skils: [
-          {name: 'name', skil: 10},
-          {name: 'name', skil: 22},
-          {name: 'name', skil: 30}
+          {name: 'skilname', skil: 10},
+          {name: 'skilname', skil: 22},
+          {name: 'skilname', skil: 30}
         ],
         exp: [
-          {name: '工作经历',
+          {name: '教育经历',
             exp: [
               {startTime: '', endTime: '', company: '', job: '', exps: ''}
             ]
           },
-          {name: '教育经历',
+          {name: '工作经历',
             exp: [
               {startTime: '', endTime: '', company: '', job: '', exps: ''}
             ]
@@ -143,6 +176,7 @@ export default {
 }
 #app .mu-slider-thumb {
 background-color:#fff;
+color: #fff;
 }
 #app .mu-slider-fill {
  background-color:#fff;
