@@ -33,9 +33,9 @@
       </mu-card>
     </div>
     <div class="custom-ul" v-for="item in sCustom">
-      <mu-card class='custom-li'>
+      <mu-card class='custom-lis'>
         <mu-card-title :title="item.name" />
-        <mu-card-text>
+        <mu-card-text  class='custom-li'>
           <mu-text-field label="描述" labelFloat v-model='item.exps' multiLine :rows="2" :rowsMax="60" fullWidth class='custom-text' />
         </mu-card-text>
         <mu-card-actions>
@@ -131,7 +131,7 @@ export default {
 </script>
 
 <!-- Add "scoped" attribute to limit CSS to this component only -->
-<style scoped>
+<style>
 .subject {
   width: 75%;
   min-height: 100vh;
@@ -151,7 +151,9 @@ export default {
 .mu-card {
   margin-bottom: 1.5em;
 }
-
+.subject .mu-text-field-textarea{
+  text-indent: 2em;
+}
 
 /*.subject::-webkit-scrollbar{
   display: none;
@@ -164,7 +166,7 @@ export default {
 
 .crad-li .card-exp-del,
 .crad-ul .card-exp-add,
-.custom-li .custom-del,
+.custom-lis .custom-del,
 .custom-li .card-exp-del,
 .subject .card-add-big {
   opacity: 0;
@@ -175,7 +177,7 @@ export default {
 
 .crad-li:hover .card-exp-del,
 .crad-ul:hover .card-exp-add,
-.custom-li:hover .custom-del,
+.custom-lis:hover .custom-del,
 .custom-li:hover .card-exp-del,
 .subject:hover .card-add-big {
   opacity: 1;

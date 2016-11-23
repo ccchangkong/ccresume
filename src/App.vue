@@ -1,6 +1,6 @@
 <template>
   <div id="app">
-    <sidebar :sCore="resume.core" :sSkils='resume.skils' :sAvatar='avatar' @sAdd="add" @sDel='del' @sClear='clear' @changePic='change'></sidebar>
+    <sidebar :sCore="resume.core" :sSkils='resume.skils' :sAvatar='avatar' @sAdd="add" @sDel='del' @sClear='clear' @changePic='change' @sCc='cc'></sidebar>
     <subject :sExp='resume.exp' :sCustom='resume.custom' @sAdd="add" @sDel='del'></subject>
   </div>
 </template>
@@ -50,7 +50,7 @@ export default {
           {name: '姓名', value: '陈亮'},
           {name: '职业', value: '前端工程师'},
           {name: '电话', value: '18761699850'},
-          {name: '简介', value: ''}
+          {name: '简介', value: '前端偏前'}
         ],
         skils: [
           {name: 'JS', skil: 60},
@@ -60,22 +60,25 @@ export default {
         exp: [
           {name: '教育经历',
             exp: [
-              {startTime: '', endTime: '', company: '', job: '', exps: ''}
+              {startTime: '2016-11-23', endTime: '2016-11-23', company: '南京信息职业技术学院', job: '学生', exps: '无'},
+              {startTime: '2016-11-23', endTime: '2016-11-23', company: '南京理工大学', job: '学生', exps: '无'}
             ]
           },
           {name: '工作经历',
             exp: [
-              {startTime: '', endTime: '', company: '', job: '', exps: ''}
+              {startTime: '', endTime: '', company: '聚奢网络科技', job: '前端工程师', exps: '负责部分商城、分销、后台、移动端及APP内置页面的制作，协助后端开发部分系统。'}
             ]
           },
           {name: '项目经历',
             exp: [
-              {startTime: '', endTime: '', company: '', job: '', exps: ''}
+              {startTime: '', endTime: '', company: '', job: '', exps: '个人技术博客http://www.vastskycc.com/'},
+              {startTime: '', endTime: '', company: '', job: '', exps: '聚奢网自己负责制作的页面https://github.com/ccchangkong/work_jushewang'},
+              {startTime: '', endTime: '', company: '', job: '', exps: '基于vue+muse-ui的简历生成器https://github.com/ccchangkong/ccresume/'}
             ]
           }
         ],
         custom: [
-          {name: '自我评价', exps: ''}
+          {name: '自我评价', exps: '2015年开始接触前端技术，在学新技术的同时研读专业书籍，水平在初级到中级前端工程师之间，偏向于前端偏前领域。'}
         ]
       }
     }
@@ -148,6 +151,9 @@ export default {
         ]
       }
       this.avatar = ''
+    },
+    cc () {
+      this.resume = this.cresume
     }
   },
   watch: {

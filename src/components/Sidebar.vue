@@ -25,6 +25,11 @@
         <mu-tooltip label="生成图片" touch :show="show.photo" :trigger="trigger.photo" />
       </div>
       <!-- <mu-float-button icon="settings" mini /> -->
+      <div ref="cc" class="s-box-btns" @mouseenter="handleHover('cc')" @mouseleave="handleHoverExit('cc')">
+        <mu-float-button icon="closed_caption" mini @click="sCc()"/>
+        <mu-tooltip label="cc长空" touch :show="show.cc" :trigger="trigger.cc" />
+      </div>
+
       <div ref="reset" class="s-box-btns" @mouseenter="handleHover('reset')" @mouseleave="handleHoverExit('reset')">
         <mu-float-button icon="delete_forever" mini @click="sClear()"  secondary/>
         <mu-tooltip label="重置" touch :show="show.reset" :trigger="trigger.reset" />
@@ -73,13 +78,15 @@ export default {
         reset: false,
         add: false,
         photo: false,
-        pic: false
+        pic: false,
+        cc: false
       },
       trigger: {
         reset: null,
         add: null,
         photo: null,
-        pic: null
+        pic: null,
+        cc: null
       }
     }
   },
@@ -88,6 +95,7 @@ export default {
     this.trigger.add = this.$refs.add
     this.trigger.photo = this.$refs.photo
     this.trigger.pic = this.$refs.pic
+    this.trigger.cc = this.$refs.cc
   },
   methods: {
     changePic (dl) {
@@ -114,6 +122,9 @@ export default {
     },
     sClear () {
       this.$emit('sClear')
+    },
+    sCc () {
+      this.$emit('sCc')
     },
     open (vl) {
       this[vl] = true
@@ -208,6 +219,9 @@ export default {
 
 #dw {
   display: none;
+}
+.s-core .mu-text-field-input{
+  text-indent: 2em;
 }
 .s-skils-box:hover .mu-icon-button {
   display: block;
