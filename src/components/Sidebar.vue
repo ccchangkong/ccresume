@@ -36,13 +36,13 @@
       </div>
     </div>
 
-    <mu-dialog v-if="dialogSkil" title="添加技能" @close="close('dialogSkil')">
+    <mu-dialog :open="dialogSkil" title="添加技能" @close="close('dialogSkil')">
       <mu-text-field label="name" labelFloat v-model='addValue.name' />
       <mu-text-field label="skils" labelFloat v-model='addValue.skil' />
       <mu-flat-button slot="actions" @click="close('dialogSkil')" primary label="取消" />
       <mu-flat-button slot="actions" keyboardFocused primary @click="sAdd(addValue, 'skils', 'dialogSkil')" label="确定" />
     </mu-dialog>
-    <mu-dialog v-if="dialogPic" title="替换头像" @close="close('dialogPic')">
+    <mu-dialog :open="dialogPic" title="替换头像" @close="close('dialogPic')">
       <!-- <mu-text-field label="图片地址" labelFloat v-model='src' fullWidth/> -->
       <mu-flat-button slot="actions" @click="close('dialogPic')" primary label="取消" />
       <input type="file" id='upPic' accept="image/png,image/jpeg,image/webP">

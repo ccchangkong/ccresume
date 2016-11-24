@@ -46,10 +46,10 @@
     <div class="card-add-big-box">
       <mu-float-button label="新建卡片" @click="open('dialogCard')" class='card-add-big' icon='add' />
     </div>
-    <mu-dialog v-if="dialogExp" title="添加" @close="close('dialogExp')">
+    <mu-dialog :open="dialogExp" title="添加" @close="close('dialogExp')">
       <mu-row gutter>
         <mu-col width="100" tablet="50" desktop="50">
-          <mu-date-picker mode="landscape" container="inline"  hintText="开始日期" v-model="addExpValue.startTime" />
+          <mu-date-picker mode="landscape"   hintText="开始日期" v-model="addExpValue.startTime" />
         </mu-col>
         <mu-col width="100" tablet="100" desktop="50">
           <mu-date-picker mode="landscape" container="inline"  hintText="结束日期" v-model="addExpValue.endTime" />
@@ -67,7 +67,7 @@
       <mu-flat-button slot="actions" @click="close('dialogExp')" primary label="取消" />
       <mu-flat-button slot="actions" keyboardFocused primary @click="sAdd(addExpValue, 'exp', 'dialogExp', dialogExpI, 'exp')" label="确定" />
     </mu-dialog>
-    <mu-dialog v-if="dialogCard" title="新建卡片" @close="close('dialogCard')">
+    <mu-dialog :open="dialogCard" title="新建卡片" @close="close('dialogCard')">
       <mu-text-field label="标题" labelFloat v-model='addCardValue.name' />
       <mu-text-field label="描述" labelFloat v-model='addCardValue.exps' />
       <mu-flat-button slot="actions" @click="close('dialogCard')" primary label="取消" />
