@@ -1,9 +1,11 @@
 <template>
   <div id="app">
-    <sidebar :sCore="resume.core" :sSkils='resume.skils' :sAvatar='avatar' @sAdd="add" @sDel='del' @sClear='clear' @changePic='change' @sCc='cc'></sidebar>
-    <subject :sExp='resume.exp' :sCustom='resume.custom' @sAdd="add" @sDel='del'></subject>
+        <sidebar :sCore="resume.core" :sSkils='resume.skils' :sAvatar='avatar' @sAdd="add" @sDel='del' @sClear='clear' @changePic='change' @sCc='cc'></sidebar>
+        <subject :sExp='resume.exp' :sCustom='resume.custom' @sAdd="add" @sDel='del'></subject>
+
   </div>
 </template>
+
 <script>
 import Sidebar from './components/Sidebar'
 import Subject from './components/Subject'
@@ -187,24 +189,8 @@ color: #fff;
 #app .mu-slider-fill {
  background-color:#fff;
 }
-html {
-  overflow-y: scroll;
-  background-color: #333;
-}
-
-:root {
-  overflow-y: auto;
-  overflow-x: hidden;
-}
-
-:root body {
-  position: absolute;
-}
-
 body {
     padding-left: calc(100vw - 100%);
-  width: 100vw;
-  overflow: hidden;
 }
 </style>
 

@@ -9,14 +9,20 @@
     </div>
     <div class="s-skils" v-for="(item, index) in sSkils">
       <div class="s-skils-box">
-        <mu-text-field v-model='item.name' />
-        <p class="s-skils-dot">{{item.skil}}/100</p>
-        <mu-slider v-model="item.skil" :step="10" class="" />
+        <mu-row gutter>
+          <mu-col width="100" tablet="50" desktop="50">
+            <mu-text-field v-model='item.name' />
+          </mu-col>
+          <mu-col width="100" tablet="50" desktop="50" style='text-align: end;'>
+            <p class="s-skils-dot">{{item.skil}}/100</p>
+          </mu-col>
+        </mu-row>
+        <mu-slider v-model="item.skil" :step="5" class="" />
         <mu-icon-button icon="delete" @click="sDel(index,'skils')" />
       </div>
     </div>
     <div v-show="showBtn" class="s-box-btn">
-      <div ref="add" class="s-box-btns" @mouseenter="handleHover('add')" @mouseleave="handleHoverExit('add')" >
+      <div ref="add" class="s-box-btns" @mouseenter="handleHover('add')" @mouseleave="handleHoverExit('add')">
         <mu-float-button icon="add" mini class="demo-float-button" @click="open('dialogSkil')" />
         <mu-tooltip label="添加技能" touch :show="show.add" :trigger="trigger.add" />
       </div>
@@ -24,18 +30,15 @@
         <mu-float-button icon="add_a_photo" mini @click="photo" />
         <mu-tooltip label="生成图片" touch :show="show.photo" :trigger="trigger.photo" />
       </div>
-      <!-- <mu-float-button icon="settings" mini /> -->
       <div ref="cc" class="s-box-btns" @mouseenter="handleHover('cc')" @mouseleave="handleHoverExit('cc')">
-        <mu-float-button icon="closed_caption" mini @click="sCc()"/>
+        <mu-float-button icon="closed_caption" mini @click="sCc()" />
         <mu-tooltip label="cc长空" touch :show="show.cc" :trigger="trigger.cc" />
       </div>
-
       <div ref="reset" class="s-box-btns" @mouseenter="handleHover('reset')" @mouseleave="handleHoverExit('reset')">
-        <mu-float-button icon="delete_forever" mini @click="sClear()"  secondary/>
+        <mu-float-button icon="delete_forever" mini @click="sClear()" secondary/>
         <mu-tooltip label="重置" touch :show="show.reset" :trigger="trigger.reset" />
       </div>
     </div>
-
     <mu-dialog :open="dialogSkil" title="添加技能" @close="close('dialogSkil')">
       <mu-text-field label="name" labelFloat v-model='addValue.name' />
       <mu-text-field label="skils" labelFloat v-model='addValue.skil' />
@@ -43,16 +46,15 @@
       <mu-flat-button slot="actions" keyboardFocused primary @click="sAdd(addValue, 'skils', 'dialogSkil')" label="确定" />
     </mu-dialog>
     <mu-dialog :open="dialogPic" title="替换头像" @close="close('dialogPic')">
-      <!-- <mu-text-field label="图片地址" labelFloat v-model='src' fullWidth/> -->
       <mu-flat-button slot="actions" @click="close('dialogPic')" primary label="取消" />
       <input type="file" id='upPic' accept="image/png,image/jpeg,image/webP">
       <p>3MB以下的png、jpg、jpeg或webp图片，建议使用方形图片</p>
-      <mu-flat-button slot="actions"  label="确定" @click="changePic('dialogPic')" />
-      <!-- <mu-flat-button slot="actions" keyboardFocused primary label="确定" @click="changePic('dialogPic',src)" /> -->
+      <mu-flat-button slot="actions" label="确定" @click="changePic('dialogPic')" />
     </mu-dialog>
     <a :href="spic" id="dw" download="my.png"></a>
   </div>
 </template>
+
 
 
 
@@ -71,7 +73,7 @@ export default {
       dialogPic: false,
       addValue: {
         name: '',
-        skil: ''
+        skil: 60
       },
       showBtn: true,
       show: {
@@ -170,18 +172,18 @@ export default {
   color: #fff;
   vertical-align: top;
   transition: .5s;
-  position: relative;
   padding: 30px;
-  box-sizing: border-box;
-    background-color: #03a9f4;
+  background-color: #03a9f4;
   background-image: linear-gradient(-45deg, #4fc3f7, #03a9f4);
   background-size: 100% 200%;
-  background-position:0 50%;
+  background-position: 0 50%;
 }
+
 .sidebar:hover {
   background-color: #29b6f6;
-  background-position:0 100%;
+  background-position: 0 100%;
 }
+
 .sidebar:hover .s-box-btn {
   opacity: 1;
 }
@@ -190,12 +192,12 @@ export default {
   opacity: 0;
   transition: .5s;
 }
-.s-box-btns{
+
+.s-box-btns {
   position: relative;
   display: inline-block;
   margin-right: 1em;
 }
-
 
 .avatar {
   border-radius: 100%;
@@ -209,33 +211,31 @@ export default {
   background-color: #fff;
   background-image: linear-gradient(45deg, #fdfdfd, #57afef);
   background-size: 100% 200%;
-  background-position:0 50%;
+  background-position: 0 50%;
 }
 
 .avatar:hover {
   box-shadow: 0 0 15px #fff;
-  background-position:0 100%;
+  background-position: 0 100%;
 }
 
 #dw {
   display: none;
 }
-.s-core .mu-text-field-input{
+
+.s-core .mu-text-field-input {
   text-indent: 2em;
 }
+
 .s-skils-box:hover .mu-icon-button {
   display: block;
-/*opacity: 1;*/
 }
 
 .s-skils-box .mu-icon-button {
   display: none;
-
-    position: absolute;
-    left: -38px;
-    top: 2px;
-/*      opacity: 0;
-    transition: .5s;*/
+  position: absolute;
+  left: -38px;
+  top: 2px;
 }
 
 .sidebar .mu-text-field-focus-line {
@@ -246,14 +246,13 @@ export default {
   color: rgba(256, 256, 256, .9);
 }
 
-.s-skils-box {
+/*.s-skils-box {
   position: relative;
-}
+}*/
 
 .s-skils-dot {
-  position: absolute;
-  right: 0;
-  top: 0;
+display: inline-block;
 }
+
 </style>
 

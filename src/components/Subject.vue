@@ -20,7 +20,7 @@
                 <mu-text-field label="职务" labelFloat v-model='items.job' />
               </mu-col>
               <mu-col width="100" tablet="100" desktop="100">
-                <mu-text-field label="描述" labelFloat v-model='items.exps' fullWidth multiLine :rows="2" :rowsMax="6" class='card-text' /></mu-col>
+                <mu-text-field label="描述" labelFloat v-model='items.exps' fullWidth multiLine :rows="2" :rowsMax="6" class='ml-text' /></mu-col>
             </mu-row>
             <div class="card-exp-del-box">
               <mu-icon-button icon="delete" label="删除" @click="sDel(indexs,'exp',index,'exp')" class='card-exp-del' />
@@ -36,7 +36,7 @@
       <mu-card class='custom-lis'>
         <mu-card-title :title="item.name" />
         <mu-card-text  class='custom-li'>
-          <mu-text-field label="描述" labelFloat v-model='item.exps' multiLine :rows="2" :rowsMax="60" fullWidth class='custom-text' />
+          <mu-text-field label="描述" labelFloat v-model='item.exps' multiLine :rows="2" :rowsMax="6" fullWidth class='ml-text' />
         </mu-card-text>
         <mu-card-actions>
           <mu-float-button label="删除" @click="sDel(index,'custom')" class='custom-del' icon='clear' mini secondary />
@@ -49,7 +49,7 @@
     <mu-dialog :open="dialogExp" title="添加" @close="close('dialogExp')">
       <mu-row gutter>
         <mu-col width="100" tablet="50" desktop="50">
-          <mu-date-picker mode="landscape"   hintText="开始日期" v-model="addExpValue.startTime" />
+          <mu-date-picker mode="landscape" container="inline"  hintText="开始日期" v-model="addExpValue.startTime" />
         </mu-col>
         <mu-col width="100" tablet="100" desktop="50">
           <mu-date-picker mode="landscape" container="inline"  hintText="结束日期" v-model="addExpValue.endTime" />
@@ -62,14 +62,19 @@
           <mu-text-field label="职务" labelFloat v-model='addExpValue.job' />
         </mu-col>
         <mu-col width="100" tablet="100" desktop="100">
-          <mu-text-field label="描述" labelFloat v-model='addExpValue.exps' fullWidth multiLine :rows="2" :rowsMax="6" class='card-text' /></mu-col>
+          <mu-text-field label="描述" labelFloat v-model='addExpValue.exps' fullWidth multiLine :rows="2" :rowsMax="6" class='ml-text' /></mu-col>
       </mu-row>
       <mu-flat-button slot="actions" @click="close('dialogExp')" primary label="取消" />
       <mu-flat-button slot="actions" keyboardFocused primary @click="sAdd(addExpValue, 'exp', 'dialogExp', dialogExpI, 'exp')" label="确定" />
     </mu-dialog>
     <mu-dialog :open="dialogCard" title="新建卡片" @close="close('dialogCard')">
-      <mu-text-field label="标题" labelFloat v-model='addCardValue.name' />
-      <mu-text-field label="描述" labelFloat v-model='addCardValue.exps' />
+          <mu-row gutter>
+        <mu-col width="100" tablet="50" desktop="50">
+         <mu-text-field label="标题" labelFloat v-model='addCardValue.name' />
+        </mu-col>
+        <mu-col width="100" tablet="100" desktop="100">
+          <mu-text-field label="描述" labelFloat v-model='addCardValue.exps' fullWidth multiLine :rows="2" :rowsMax="6" class='ml-text' /></mu-col>
+      </mu-row>
       <mu-flat-button slot="actions" @click="close('dialogCard')" primary label="取消" />
       <mu-flat-button slot="actions" keyboardFocused primary @click="sAdd(addCardValue, 'custom', 'dialogCard')" label="确定" />
     </mu-dialog>
@@ -139,7 +144,6 @@ export default {
   color: #333;
   transition: .5s;
   padding: 1.5em 2em;
-  box-sizing: border-box;
   position: relative;
   overflow: hidden;
 }
@@ -159,8 +163,7 @@ export default {
   display: none;
 }*/
 
-.subject .custom-text,
-.subject .card-text {
+.subject .mu-text-field.has-label.ml-text{
   height: auto;
 }
 
