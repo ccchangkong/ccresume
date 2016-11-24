@@ -163,9 +163,7 @@ export default {
   display: none;
 }*/
 
-.subject .mu-text-field.has-label.ml-text{
-  height: auto;
-}
+
 
 .crad-li .card-exp-del,
 .crad-ul .card-exp-add,
