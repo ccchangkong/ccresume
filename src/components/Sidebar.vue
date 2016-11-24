@@ -11,7 +11,7 @@
       <div class="s-skils-box">
         <mu-row gutter>
           <mu-col width="100" tablet="50" desktop="50">
-            <mu-text-field v-model='item.name' />
+            <mu-text-field v-model='item.name'/>
           </mu-col>
           <mu-col width="100" tablet="50" desktop="50" style='text-align: end;'>
             <p class="s-skils-dot">{{item.skil}}/100</p>
