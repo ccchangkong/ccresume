@@ -1,5 +1,7 @@
 # ccresume
 
+[ccresume](https://ccchangkong.github.io/ccresume/)
+
 > A Vue.js project
 
 ## Build Setup
