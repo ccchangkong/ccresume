@@ -29,20 +29,20 @@ export default {
         exp: [
           {name: '工作经历',
             exp: [
-              {startTime: '2016-5-9', endTime: '', company: '聚奢网络科技', job: '前端工程师', exps: '负责部分商城、分销、后台、移动端及APP内置页面的制作，协助后端开发部分系统。'}
+              {startTime: '2016-05-09', endTime: '', company: '聚奢网络科技', job: '前端工程师', exps: '负责部分商城、分销、后台、移动端及APP内置页面的制作，协助后端开发部分系统。'}
             ]
           },
           {name: '项目经历',
             exp: [
-              {startTime: '2015-7-1', endTime: '', company: '个人项目', job: '无', exps: '个人技术博客\nhttp://www.vastskycc.com/\n2015年7月注册，2016年5月改版上线，平均每月更新三篇技术文章'},
-              {startTime: '2016-5-9', endTime: '', company: '聚奢网络科技', job: '前端工程师', exps: '聚奢网自己负责制作的页面\nhttps://github.com/ccchangkong/work_jushewang\n传统前端项目，电脑端兼容IE8+，移动端兼容微信webview，渐进增强，后退平稳，编码风格日趋规范'},
-              {startTime: '2016-11-1', endTime: '2016-11-20', company: '个人项目', job: '无', exps: '基于vue+muse-ui的简历生成器\nhttps://github.com/ccchangkong/ccresume/\n由webpack构建，vue2.0驱动，muse-ui样式库搭建，组件化开发，localstrong存储，jquery free'}
+              {startTime: '2015-07-01', endTime: '', company: '个人项目', job: '无', exps: '个人技术博客\nhttp://www.vastskycc.com/\n2015年7月注册，2016年5月改版上线，平均每月更新三篇技术文章'},
+              {startTime: '2016-05-09', endTime: '', company: '聚奢网络科技', job: '前端工程师', exps: '聚奢网自己负责制作的页面\nhttps://github.com/ccchangkong/work_jushewang\n传统前端项目，电脑端兼容IE8+，移动端兼容微信webview，渐进增强，后退平稳，编码风格日趋规范'},
+              {startTime: '2016-11-01', endTime: '2016-11-20', company: '个人项目', job: '无', exps: '基于vue+muse-ui的简历生成器\nhttps://github.com/ccchangkong/ccresume/\n由webpack构建，vue2.0驱动，muse-ui样式库搭建，组件化开发，localstrong存储，jquery free'}
             ]
           },
           {name: '教育经历',
             exp: [
-              {startTime: '2012-5-1', endTime: '2015-7-1', company: '南京信息职业技术学院', job: '学生', exps: '电子信息工程专业'},
-              {startTime: '2014-7-1', endTime: '2016-7-1', company: '南京理工大学', job: '学生', exps: '接本，电子信息工程专业'}
+              {startTime: '2012-05-01', endTime: '2015-07-01', company: '南京信息职业技术学院', job: '学生', exps: '电子信息工程专业'},
+              {startTime: '2014-07-01', endTime: '2016-07-01', company: '南京理工大学', job: '学生', exps: '接本，电子信息工程专业'}
             ]
           }
         ],
@@ -141,20 +141,20 @@ export default {
         exp: [
           {name: '工作经历',
             exp: [
-              {startTime: '2016-5-9', endTime: '', company: '聚奢网络科技', job: '前端工程师', exps: '负责部分商城、分销、后台、移动端及APP内置页面的制作，协助后端开发部分系统。'}
+              {startTime: '2016-05-09', endTime: '', company: '聚奢网络科技', job: '前端工程师', exps: '负责部分商城、分销、后台、移动端及APP内置页面的制作，协助后端开发部分系统。'}
             ]
           },
           {name: '项目经历',
             exp: [
-              {startTime: '2015-7-1', endTime: '', company: '个人项目', job: '无', exps: '个人技术博客\nhttp://www.vastskycc.com/\n2015年7月注册，2016年5月改版上线，平均每月更新三篇技术文章'},
-              {startTime: '2016-5-9', endTime: '', company: '聚奢网络科技', job: '前端工程师', exps: '聚奢网自己负责制作的页面\nhttps://github.com/ccchangkong/work_jushewang\n传统前端项目，电脑端兼容IE8+，移动端兼容微信webview，渐进增强，后退平稳，编码风格日趋规范'},
-              {startTime: '2016-11-1', endTime: '2016-11-20', company: '个人项目', job: '无', exps: '基于vue+muse-ui的简历生成器\nhttps://github.com/ccchangkong/ccresume/\n由webpack构建，vue2.0驱动，muse-ui样式库搭建，组件化开发，localstrong存储，jquery free'}
+              {startTime: '2015-07-01', endTime: '', company: '个人项目', job: '无', exps: '个人技术博客\nhttp://www.vastskycc.com/\n2015年7月注册，2016年5月改版上线，平均每月更新三篇技术文章'},
+              {startTime: '2016-05-09', endTime: '', company: '聚奢网络科技', job: '前端工程师', exps: '聚奢网自己负责制作的页面\nhttps://github.com/ccchangkong/work_jushewang\n传统前端项目，电脑端兼容IE8+，移动端兼容微信webview，渐进增强，后退平稳，编码风格日趋规范'},
+              {startTime: '2016-11-01', endTime: '2016-11-20', company: '个人项目', job: '无', exps: '基于vue+muse-ui的简历生成器\nhttps://github.com/ccchangkong/ccresume/\n由webpack构建，vue2.0驱动，muse-ui样式库搭建，组件化开发，localstrong存储，jquery free'}
             ]
           },
           {name: '教育经历',
             exp: [
-              {startTime: '2012-5-1', endTime: '2015-7-1', company: '南京信息职业技术学院', job: '学生', exps: '电子信息工程专业'},
-              {startTime: '2014-7-1', endTime: '2016-7-1', company: '南京理工大学', job: '学生', exps: '接本，电子信息工程专业'}
+              {startTime: '2012-05-01', endTime: '2015-07-01', company: '南京信息职业技术学院', job: '学生', exps: '电子信息工程专业'},
+              {startTime: '2014-07-01', endTime: '2016-07-01', company: '南京理工大学', job: '学生', exps: '接本，电子信息工程专业'}
             ]
           }
         ],
