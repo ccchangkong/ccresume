@@ -11,7 +11,7 @@
 
 ## 项目说明
 
-由webpack构建，vue2.0驱动，muse-ui样式库搭建，组件化开发，localstrong存储，h2ml2canvas导出图片，jquery free
+由webpack构建，vue2.0驱动，muse-ui样式库搭建，组件化开发，localstrong存储，html2canvas导出图片，jquery free
 
 ## 项目结构
 
