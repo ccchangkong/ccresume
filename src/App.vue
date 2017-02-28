@@ -36,7 +36,8 @@ export default {
             exp: [
               {startTime: '2015-07-01', endTime: '', company: '个人项目', job: '无', exps: '个人技术博客\nhttp://www.vastskycc.com/\n2015年7月注册，2016年5月改版上线，平均每月更新三篇技术文章'},
               {startTime: '2016-05-09', endTime: '', company: '聚奢网络科技', job: '前端工程师', exps: '聚奢网自己负责制作的页面\nhttps://github.com/ccchangkong/work_jushewang\n传统前端项目，电脑端兼容IE8+，移动端兼容微信webview，渐进增强，后退平稳，编码风格日趋规范'},
-              {startTime: '2016-11-01', endTime: '2016-11-20', company: '个人项目', job: '无', exps: '基于vue+muse-ui的简历生成器\nhttps://github.com/ccchangkong/ccresume/\n由webpack构建，vue2.0驱动，muse-ui样式库搭建，组件化开发，localstrong存储，jquery free'}
+              {startTime: '2016-11-01', endTime: '2016-11-20', company: '个人项目', job: '无', exps: '基于vue+muse-ui的简历生成器\nhttps://github.com/ccchangkong/ccresume/\n由webpack构建，vue2.0驱动，muse-ui样式库搭建，组件化开发，localstrong存储，jquery free'},
+              {startTime: '2017-01-01', endTime: '2017-02-28', company: '个人项目', job: '无', exps: '基于vue全家桶的音乐播放器\nhttps://github.com/ccchangkong/ccplayer/\n由webpack构建，vue2.0驱动，模块化开发，完成度60%'}
             ]
           },
           {name: '教育经历',
@@ -148,7 +149,8 @@ export default {
             exp: [
               {startTime: '2015-07-01', endTime: '', company: '个人项目', job: '无', exps: '个人技术博客\nhttp://www.vastskycc.com/\n2015年7月注册，2016年5月改版上线，平均每月更新三篇技术文章'},
               {startTime: '2016-05-09', endTime: '', company: '聚奢网络科技', job: '前端工程师', exps: '聚奢网自己负责制作的页面\nhttps://github.com/ccchangkong/work_jushewang\n传统前端项目，电脑端兼容IE8+，移动端兼容微信webview，渐进增强，后退平稳，编码风格日趋规范'},
-              {startTime: '2016-11-01', endTime: '2016-11-20', company: '个人项目', job: '无', exps: '基于vue+muse-ui的简历生成器\nhttps://github.com/ccchangkong/ccresume/\n由webpack构建，vue2.0驱动，muse-ui样式库搭建，组件化开发，localstrong存储，jquery free'}
+              {startTime: '2016-11-01', endTime: '2016-11-20', company: '个人项目', job: '无', exps: '基于vue+muse-ui的简历生成器\nhttps://github.com/ccchangkong/ccresume/\n由webpack构建，vue2.0驱动，muse-ui样式库搭建，组件化开发，localstrong存储，jquery free'},
+              {startTime: '2017-01-01', endTime: '2017-02-28', company: '个人项目', job: '无', exps: '基于vue全家桶的音乐播放器\nhttps://github.com/ccchangkong/ccplayer/\n由webpack构建，vue2.0驱动，模块化开发，完成度60%'}
             ]
           },
           {name: '教育经历',
@@ -184,12 +186,20 @@ export default {
 
 <style>
 #app {
-  width: 1200px;
   margin: auto;
   box-shadow: 0 0 5px #333;
   display: flex;
-
+         width: 100%;
+         min-width: 375px;
+       flex-direction: column;
 }
+   #app .sidebar{
+     width: 100%;
+  }
+  #app .subject{
+     width: 100%;
+     padding: 0;
+  }
 #app .mu-slider-thumb {
 background-color:#fff;
 color: #fff;
@@ -199,6 +209,64 @@ color: #fff;
 }
 body {
     padding-left: calc(100vw - 100%);
+}
+@media screen and (min-width: 375px) {
+    html {
+        /* iPhone6的375px尺寸作为16px基准，414px正好18px大小, 600 20px */
+        font-size: calc(100% + 2 * (100vw - 375px) / 39);
+        font-size: calc(16px + 2 * (100vw - 375px) / 39);
+    }
+
+}
+@media screen and (min-width: 414px) {
+    html {
+        /* 414px-1000px每100像素宽字体增加1px(18px-22px) */
+        font-size: calc(112.5% + 4 * (100vw - 414px) / 586);
+        font-size: calc(18px + 4 * (100vw - 414px) / 586);
+    }
+}
+@media screen and (min-width: 600px) {
+    html {
+        /* 600px-1000px每100像素宽字体增加1px(20px-24px) */
+        font-size: calc(125% + 4 * (100vw - 600px) / 400);
+        font-size: calc(20px + 4 * (100vw - 600px) / 400);
+    }
+    #app {
+        flex-direction:row;
+    }
+     #app .sidebar{
+       width: 35%;
+    }
+    #app .subject{
+       width: 65%;
+    }
+    #app .avatar{
+       width: 10em;
+       height: 10em;
+    }
+}
+@media screen and (min-width: 1000px) {
+    html {
+        /* 1000px往后是每100像素0.5px增加 */
+        font-size: calc(137.5% + 6 * (100vw - 1000px) / 1000);
+        font-size: calc(22px + 6 * (100vw - 1000px) / 1000);
+    }
+    #app {
+       width: 1000px;
+    }
+        #app .subject{
+       width: 75%;
+       padding: 1.5em 2em;
+    }
+        #app .avatar{
+       width: 13em;
+       height: 13em;
+    }
+}
+@media screen and (min-width: 1200px) {
+    #app {
+       width: 1200px;
+    }
 }
 </style>
 

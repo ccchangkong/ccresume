@@ -206,8 +206,8 @@ export default {
   box-shadow: 0 0 5px #ddd;
   transition: .5s;
   overflow: hidden;
-  width: 210px;
-  height: 210px;
+  width: 13em;
+  height: 13em;
   background-color: #fff;
   background-image: linear-gradient(45deg, #fdfdfd, #57afef);
   background-size: 100% 200%;
