@@ -6,15 +6,63 @@
   <meta name="viewport" content="width=device-width, initial-scale=1">
   <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
   <title>ccresume</title>
-  <!-- <script src="//cdn.bootcss.com/es6-promise/4.0.5/es6-promise.auto.min.js"></script> -->
-  <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Roboto:300,400,500,700,400italic">
-  <link rel="stylesheet" href="https://fonts.googleapis.com/icon?family=Material+Icons">
+  <link href='https://fonts.cat.net/css?family=Roboto:300,400,500,700|Material+Icons' rel="stylesheet">
 </head>
 
 <body>
   <div id="app"></div>
+  <!-- <div v-for="(item, index) in sExp" class="crad-ul" :key="item.index">
+    <md-card>
+      <md-card-header>
+        <div class="md-title">{{item.name}}</div>
+      </md-card-header>
+      <md-card-content>
+        <div v-for="(items, indexs) in item.exp" class="crad-li" :key="items.index">
+
+          <div class="md-layout">
+            <div class="md-layout-item" width="100" tablet="50" desktop="50">
+              <md-datepicker container="inline" mode="landscape" hintText="开始日期" v-model="items.startTime" />
+            </div>
+            <div class="md-layout-item" width="100" tablet="100" desktop="50">
+              <md-datepicker container="inline" mode="landscape" hintText="结束日期" v-model="items.endTime" />
+            </div>
+            <div class="md-layout">
+              <div class="md-layout-item" width="100" tablet="50" desktop="50">
+
+                <md-field>
+                  <label>单位</label>
+                  <md-input v-model="item.company"></md-input>
+                </md-field>
+
+              </div>
+              <div class="md-layout-item" width="100" tablet="50" desktop="50">
+                <md-field>
+                  <label>职务</label>
+                  <md-input v-model="item.job"></md-input>
+                </md-field>
+
+              </div>
+              <div class="md-layout-item" width="100" tablet="100" desktop="100">
+                <md-field>
+                  <label>描述</label>
+                  <md-textarea v-model='items.exps' fullWidth multiLine :rows="2" :rowsMax="6" class='ml-text'></md-textarea>
+                </md-field>
+
+              </div>
+              <div class="card-exp-del-box">
+                <md-button class="md-fab md-mini card-exp-del" @click="sDel(indexs,'exp',index,'exp')">
+                  <md-icon>delete</md-icon>
+                </md-button>
+
+              </div>
+            </div>
+          </div>
+        </div>
+      </md-card-content>
+      <md-card-actions>
+      </md-card-actions>
+    </md-card>
+    </div> -->
 </body>
 
 </html>
-
-

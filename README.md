@@ -70,3 +70,9 @@ window.alert(),this.data什么的
 ![](http://ww2.sinaimg.cn/large/6c7bfb12gw1fa4gzhxz2pj2050050mx9.jpg)
 
 千岁我老婆~
+
+## 计划
+
+框架替换为`vuetify`
+
+逻辑优化
