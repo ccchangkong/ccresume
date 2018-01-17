@@ -1,16 +1,17 @@
 <template>
   <div class="subject">
-    <div v-for="(item, index) in sExp" class="crad-ul">
+    <div v-for="(item, index) in sExp" class="crad-ul" :key="index">
       <mu-card>
         <mu-card-title :title="item.name" />
-        <div v-for="(items, indexs) in item.exp" class="crad-li">
+        <div v-for="(items, indexs) in item.exp" class="crad-li" :key="indexs">
           <mu-card-text>
             <mu-row gutter>
               <mu-col width="100" tablet="50" desktop="50">
                 <mu-date-picker container="inline" mode="landscape" hintText="开始日期" v-model="items.startTime" />
               </mu-col>
-              <mu-col width="100" tablet="100" desktop="50">
+              <mu-col width="100" tablet="50" desktop="50">
                 <mu-date-picker container="inline" mode="landscape" hintText="结束日期" v-model="items.endTime" />
+                 </mu-col>
             </mu-row>
             <mu-row gutter>
               <mu-col width="100" tablet="50" desktop="50">
@@ -20,7 +21,8 @@
                 <mu-text-field label="职务" labelFloat v-model='items.job' />
               </mu-col>
               <mu-col width="100" tablet="100" desktop="100">
-                <mu-text-field label="描述" labelFloat v-model='items.exps' fullWidth multiLine :rows="2" :rowsMax="6" class='ml-text' /></mu-col>
+                <mu-text-field label="描述" labelFloat v-model='items.exps' fullWidth multiLine :rows="2" :rowsMax="6" class='ml-text' />
+                </mu-col>
             </mu-row>
             <div class="card-exp-del-box">
               <mu-icon-button icon="delete" label="删除" @click="sDel(indexs,'exp',index,'exp')" class='card-exp-del' />
@@ -32,7 +34,7 @@
         </mu-card-actions>
       </mu-card>
     </div>
-    <div class="custom-ul" v-for="item in sCustom">
+    <div class="custom-ul" v-for="item in sCustom" :key="item.index">
       <mu-card class='custom-lis'>
         <mu-card-title :title="item.name" />
         <mu-card-text  class='custom-li'>
@@ -51,8 +53,9 @@
         <mu-col width="100" tablet="50" desktop="50">
           <mu-date-picker mode="landscape" container="inline"  hintText="开始日期" v-model="addExpValue.startTime" />
         </mu-col>
-        <mu-col width="100" tablet="100" desktop="50">
+        <mu-col width="100" tablet="50" desktop="50">
           <mu-date-picker mode="landscape" container="inline"  hintText="结束日期" v-model="addExpValue.endTime" />
+           </mu-col>
       </mu-row>
       <mu-row gutter>
         <mu-col width="100" tablet="50" desktop="50">
@@ -85,7 +88,7 @@
 <script>
 export default {
   name: 'subject',
-  props: ['sExp', 'sCustom'],
+  props: ['sResume'],
   data () {
     return {
       dialogExp: false,
@@ -101,7 +104,9 @@ export default {
       addCardValue: {
         name: '',
         exps: ''
-      }
+      },
+            sExp: this.sResume.exp,
+      sCustom: this.sResume.custom
     }
   },
   methods: {

@@ -4,10 +4,10 @@
       <img :src="sAvatar" alt="" class="avatar" @click="open('dialogPic')">
       <mu-tooltip label="点击可替换图片" touch :show="show.pic" :trigger="trigger.pic" id='d-img' />
     </div>
-    <div class="s-core" v-for="item in sCore">
+    <div class="s-core" v-for="item in sCore" :key="item.index">
       <mu-text-field :label="item.name" labelFloat v-model='item.value' />
     </div>
-    <div class="s-skils" v-for="(item, index) in sSkils">
+    <div class="s-skils" v-for="(item, index) in sSkils" :key="index">
       <div class="s-skils-box">
         <mu-row gutter>
           <mu-col width="100" tablet="50" desktop="50">
@@ -64,7 +64,7 @@
 import Html2canvas from 'html2canvas'
 export default {
   name: 'sidebar',
-  props: ['sCore', 'sSkils', 'sAvatar'],
+ props: ["sResume", "sAvatar"],
   data () {
     return {
       spic: '',
@@ -89,7 +89,9 @@ export default {
         photo: null,
         pic: null,
         cc: null
-      }
+      },
+            sCore:this.sResume.core,
+       sSkils:this.sResume.skils
     }
   },
   mounted () {
