@@ -170,18 +170,12 @@ export default {
   text-indent: 2em;
 }
 
-/*.subject::-webkit-scrollbar{
-  display: none;
-}*/
-
 .crad-li .card-exp-del,
 .crad-ul .card-exp-add,
 .custom-lis .custom-del,
 .custom-li .card-exp-del,
 .subject .card-add-big {
   opacity: 0;
-  /*visibility: ;*/
-  /*display: none;*/
   transition: 0.5s;
 }
 
@@ -191,7 +185,6 @@ export default {
 .custom-li:hover .card-exp-del,
 .subject:hover .card-add-big {
   opacity: 1;
-  /*visibility: visible;*/
   display: inline-block;
 }
 .crad-li .card-exp-del {

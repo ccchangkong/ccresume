@@ -27,12 +27,16 @@
         <mu-tooltip label="添加技能" touch :show="show.add" :trigger="trigger.add" />
       </div>
       <div ref="photo" class="s-box-btns" @mouseenter="handleHover('photo')" @mouseleave="handleHoverExit('photo')">
-        <mu-float-button icon="add_a_photo" mini @click="photo" />
+        <mu-float-button icon="add_a_photo" mini @click="photo()" />
         <mu-tooltip label="生成图片" touch :show="show.photo" :trigger="trigger.photo" />
       </div>
       <div ref="cc" class="s-box-btns" @mouseenter="handleHover('cc')" @mouseleave="handleHoverExit('cc')">
         <mu-float-button icon="closed_caption" mini @click="sCc()" />
         <mu-tooltip label="cc长空" touch :show="show.cc" :trigger="trigger.cc" />
+      </div>
+      <div ref="pdf" class="s-box-btns" @mouseenter="handleHover('pdf')" @mouseleave="handleHoverExit('pdf')">
+        <mu-float-button icon="description" mini @click="pdf()" />
+        <mu-tooltip label="生成PDF" touch :show="show.pdf" :trigger="trigger.pdf" />
       </div>
       <div ref="reset" class="s-box-btns" @mouseenter="handleHover('reset')" @mouseleave="handleHoverExit('reset')">
         <mu-float-button icon="delete_forever" mini @click="sClear()" secondary/>
@@ -56,12 +60,9 @@
 </template>
 
 
-
-
-
-
 <script>
 import Html2canvas from "Html2canvas/dist/html2canvas.min.js";
+import jsPDF from "jspdf/dist/jspdf.min.js";
 export default {
   name: "sidebar",
   props: ["sResume", "sAvatar"],
@@ -81,14 +82,16 @@ export default {
         add: false,
         photo: false,
         pic: false,
-        cc: false
+        cc: false,
+        pdf: false
       },
       trigger: {
         reset: null,
         add: null,
         photo: null,
         pic: null,
-        cc: null
+        cc: null,
+        pdf: null
       }
     };
   },
@@ -98,6 +101,7 @@ export default {
     this.trigger.photo = this.$refs.photo;
     this.trigger.pic = this.$refs.pic;
     this.trigger.cc = this.$refs.cc;
+    this.trigger.pdf = this.$refs.pdf;
   },
   computed: {
     sCore() {
@@ -167,6 +171,43 @@ export default {
             self.showBtn = true;
           });
       });
+    },
+    pdf() {
+      let self = this;
+      this.showBtn = false;
+      document.documentElement.scrollTop = 0;
+      document.body.scrollTop = 0;
+      this.$nextTick(function() {
+        Html2canvas(document.getElementById("app"))
+          .then(function(canvas) {
+            self.spic = canvas.toDataURL();
+            self.downloadPDF(self.spic);
+          })
+          .then(function() {
+            self.showBtn = true;
+          });
+      });
+    },
+    downloadPDF(imageData) {
+      const img = new Image();
+      img.src = imageData;
+      img.onload = function() {
+        let doc;
+        if (this.width > this.height) {
+          doc = new jsPDF("l", "mm", [this.width * 0.225, this.height * 0.225]);
+        } else {
+          doc = new jsPDF("p", "mm", [this.width * 0.225, this.height * 0.225]);
+        }
+        doc.addImage(
+          imageData,
+          "PNG",
+          0,
+          0,
+          this.width * 0.225,
+          this.height * 0.225
+        );
+        doc.save("pdf_" + Date.now() + ".pdf");
+      };
     }
   }
 };
@@ -253,10 +294,6 @@ export default {
 .sidebar .mu-text-field-label {
   color: rgba(256, 256, 256, 0.9);
 }
-
-/*.s-skils-box {
-  position: relative;
-}*/
 
 .s-skils-dot {
   display: inline-block;

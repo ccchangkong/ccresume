@@ -4,7 +4,7 @@ var webpack = require("webpack");
 module.exports = {
   // 你想要打包的模块的数组
   entry: {
-    vendor: ['vue/dist/vue.esm.js','Html2canvas/dist/html2canvas.min.js']
+    vendor: ['vue/dist/vue.esm.js','Html2canvas/dist/html2canvas.min.js','jspdf/dist/jspdf.min.js']
   },
   output: {
     path: path.join(__dirname, '../static/js'), // 打包后文件输出的位置
