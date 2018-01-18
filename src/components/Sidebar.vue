@@ -104,7 +104,7 @@ export default {
       return this.sResume.core;
     },
     sSkils() {
-      return this.sResume.sSkils;
+      return this.sResume.skils;
     }
   },
   methods: {
