@@ -9,6 +9,14 @@
 
 [blog](http://www.vastskycc.com/?id=26)
 
+## 注意
+> 引自[Shiroyan](https://github.com/Shiroyan/vue-material-template/edit/master/README.md)
+
+1. `npm install` 安装所有依赖
+2.	在`node_module/muse-ui/src/styles/import.less` 中找到 `@{MuseThemeUi}`
+    将其更改为 `./themes/variables/light.less`
+3.  如果你想更改主题颜色，只需要把`light.less`更改为其他预设主题即可。当然你也可以直接去修改颜色变量
+
 ## 项目说明
 
 由webpack构建，vue2.0驱动，muse-ui样式库搭建，组件化开发，localstrong存储，html2canvas导出图片，jquery free

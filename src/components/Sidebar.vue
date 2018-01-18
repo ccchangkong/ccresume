@@ -11,7 +11,7 @@
       <div class="s-skils-box">
         <mu-row gutter>
           <mu-col width="100" tablet="50" desktop="50">
-            <mu-text-field v-model='item.name'/>
+            <mu-text-field v-model='item.name' />
           </mu-col>
           <mu-col width="100" tablet="50" desktop="50" style='text-align: end;'>
             <p class="s-skils-dot">{{item.skil}}/100</p>
@@ -61,18 +61,18 @@
 
 
 <script>
-import Html2canvas from 'html2canvas'
+import Html2canvas from "Html2canvas/dist/html2canvas.min.js";
 export default {
-  name: 'sidebar',
- props: ["sResume", "sAvatar"],
-  data () {
+  name: "sidebar",
+  props: ["sResume", "sAvatar"],
+  data() {
     return {
-      spic: '',
+      spic: "",
       sho: true,
       dialogSkil: false,
       dialogPic: false,
       addValue: {
-        name: '',
+        name: "",
         skil: 60
       },
       showBtn: true,
@@ -89,81 +89,87 @@ export default {
         photo: null,
         pic: null,
         cc: null
-      },
-            sCore:this.sResume.core,
-       sSkils:this.sResume.skils
+      }
+    };
+  },
+  mounted() {
+    this.trigger.reset = this.$refs.reset;
+    this.trigger.add = this.$refs.add;
+    this.trigger.photo = this.$refs.photo;
+    this.trigger.pic = this.$refs.pic;
+    this.trigger.cc = this.$refs.cc;
+  },
+  computed: {
+    sCore() {
+      return this.sResume.core;
+    },
+    sSkils() {
+      return this.sResume.sSkils;
     }
   },
-  mounted () {
-    this.trigger.reset = this.$refs.reset
-    this.trigger.add = this.$refs.add
-    this.trigger.photo = this.$refs.photo
-    this.trigger.pic = this.$refs.pic
-    this.trigger.cc = this.$refs.cc
-  },
   methods: {
-    changePic (dl) {
-      this.close(dl)
-      let self = this
-      let file = document.getElementById('upPic').files[0]
+    changePic(dl) {
+      this.close(dl);
+      let self = this;
+      let file = document.getElementById("upPic").files[0];
       if (file.size < 3145728) {
-        let imgFile = new window.FileReader()
-        imgFile.readAsDataURL(file)
-        imgFile.onload = function () {
-          let imgData = imgFile.result
-          self.$emit('changePic', imgData)
-        }
+        let imgFile = new window.FileReader();
+        imgFile.readAsDataURL(file);
+        imgFile.onload = function() {
+          let imgData = imgFile.result;
+          self.$emit("changePic", imgData);
+        };
       } else {
-        window.alert('big')
+        window.alert("big");
       }
     },
-    sAdd (vl, type, dl) {
-      this.close(dl)
-      this.$emit('sAdd', vl, type)
+    sAdd(vl, type, dl) {
+      this.close(dl);
+      this.$emit("sAdd", vl, type);
     },
-    sDel (vl, type) {
-      this.$emit('sDel', vl, type)
+    sDel(vl, type) {
+      this.$emit("sDel", vl, type);
     },
-    sClear () {
-      this.$emit('sClear')
+    sClear() {
+      this.$emit("sClear");
     },
-    sCc () {
-      this.$emit('sCc')
+    sCc() {
+      this.$emit("sCc");
     },
-    open (vl) {
-      this[vl] = true
+    open(vl) {
+      this[vl] = true;
     },
-    close (vl) {
-      this[vl] = false
+    close(vl) {
+      this[vl] = false;
     },
-    handleHover (vl) {
-      this.show[vl] = true
+    handleHover(vl) {
+      this.show[vl] = true;
     },
-    handleHoverExit (vl) {
-      this.show[vl] = false
+    handleHoverExit(vl) {
+      this.show[vl] = false;
     },
-    photo () {
-      let self = this
-      this.showBtn = false
-      document.documentElement.scrollTop = 0
-      document.body.scrollTop = 0
+    photo() {
+      let self = this;
+      this.showBtn = false;
+      document.documentElement.scrollTop = 0;
+      document.body.scrollTop = 0;
       // var myList = document.querySelectorAll('.mu-tooltip')
       // Array.prototype.forEach.call(myList, function (div) {
       //   div.style.display = 'none'
       // })
-      this.$nextTick(function () {
-        Html2canvas(document.getElementById('app'))
-        .then(function (canvas) {
-          self.spic = canvas.toDataURL()
-        })
-        .then(function () {
-          document.getElementById('dw').click()
-          self.showBtn = true
-        })
-      })
+      this.$nextTick(function() {
+        Html2canvas(document.getElementById("app"))
+          .then(function(canvas) {
+            self.spic = canvas.toDataURL();
+          })
+          .then(function() {
+            document.getElementById("dw").click();
+            self.showBtn = true;
+          });
+      });
     }
   }
-}
+};
 </script>
 
 <!-- Add "scoped" attribute to limit CSS to this component only -->
@@ -173,7 +179,7 @@ export default {
   min-height: 100vh;
   color: #fff;
   vertical-align: top;
-  transition: .5s;
+  transition: 0.5s;
   padding: 30px;
   background-color: #03a9f4;
   background-image: linear-gradient(-45deg, #4fc3f7, #03a9f4);
@@ -192,7 +198,7 @@ export default {
 
 .sidebar .s-box-btn {
   opacity: 0;
-  transition: .5s;
+  transition: 0.5s;
 }
 
 .s-box-btns {
@@ -206,7 +212,7 @@ export default {
   display: block;
   margin: auto;
   box-shadow: 0 0 5px #ddd;
-  transition: .5s;
+  transition: 0.5s;
   overflow: hidden;
   width: 13em;
   height: 13em;
@@ -245,7 +251,7 @@ export default {
 }
 
 .sidebar .mu-text-field-label {
-  color: rgba(256, 256, 256, .9);
+  color: rgba(256, 256, 256, 0.9);
 }
 
 /*.s-skils-box {
@@ -253,8 +259,7 @@ export default {
 }*/
 
 .s-skils-dot {
-display: inline-block;
+  display: inline-block;
 }
-
 </style>
 

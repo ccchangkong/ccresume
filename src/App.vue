@@ -1,7 +1,7 @@
 <template>
   <div id="app">
-      <sidebar :sResume.sync="resume" :sAvatar.sync='avatar' @sAdd="add" @sDel='del' @sClear='clear' @changePic='change' @sCc='cc'></sidebar>
-      <subject :sResume.sync="resume" @sAdd="add" @sDel='del'></subject>
+      <sidebar :sResume="resume" :sAvatar='avatar' @sAdd="add" @sDel='del' @sClear='clear' @changePic='change' @sCc='cc'></sidebar>
+      <subject :sResume="resume" @sAdd="add" @sDel='del'></subject>
   </div>
 </template>
 

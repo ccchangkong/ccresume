@@ -11,7 +11,7 @@
               </mu-col>
               <mu-col width="100" tablet="50" desktop="50">
                 <mu-date-picker container="inline" mode="landscape" hintText="结束日期" v-model="items.endTime" />
-                 </mu-col>
+              </mu-col>
             </mu-row>
             <mu-row gutter>
               <mu-col width="100" tablet="50" desktop="50">
@@ -22,7 +22,7 @@
               </mu-col>
               <mu-col width="100" tablet="100" desktop="100">
                 <mu-text-field label="描述" labelFloat v-model='items.exps' fullWidth multiLine :rows="2" :rowsMax="6" class='ml-text' />
-                </mu-col>
+              </mu-col>
             </mu-row>
             <div class="card-exp-del-box">
               <mu-icon-button icon="delete" label="删除" @click="sDel(indexs,'exp',index,'exp')" class='card-exp-del' />
@@ -37,7 +37,7 @@
     <div class="custom-ul" v-for="item in sCustom" :key="item.index">
       <mu-card class='custom-lis'>
         <mu-card-title :title="item.name" />
-        <mu-card-text  class='custom-li'>
+        <mu-card-text class='custom-li'>
           <mu-text-field label="描述" labelFloat v-model='item.exps' multiLine :rows="2" :rowsMax="6" fullWidth class='ml-text' />
         </mu-card-text>
         <mu-card-actions>
@@ -51,11 +51,11 @@
     <mu-dialog :open="dialogExp" title="添加" @close="close('dialogExp')">
       <mu-row gutter>
         <mu-col width="100" tablet="50" desktop="50">
-          <mu-date-picker mode="landscape" container="inline"  hintText="开始日期" v-model="addExpValue.startTime" />
+          <mu-date-picker mode="landscape" container="inline" hintText="开始日期" v-model="addExpValue.startTime" />
         </mu-col>
         <mu-col width="100" tablet="50" desktop="50">
-          <mu-date-picker mode="landscape" container="inline"  hintText="结束日期" v-model="addExpValue.endTime" />
-           </mu-col>
+          <mu-date-picker mode="landscape" container="inline" hintText="结束日期" v-model="addExpValue.endTime" />
+        </mu-col>
       </mu-row>
       <mu-row gutter>
         <mu-col width="100" tablet="50" desktop="50">
@@ -71,9 +71,9 @@
       <mu-flat-button slot="actions" keyboardFocused primary @click="sAdd(addExpValue, 'exp', 'dialogExp', dialogExpI, 'exp')" label="确定" />
     </mu-dialog>
     <mu-dialog :open="dialogCard" title="新建卡片" @close="close('dialogCard')">
-          <mu-row gutter>
+      <mu-row gutter>
         <mu-col width="100" tablet="50" desktop="50">
-         <mu-text-field label="标题" labelFloat v-model='addCardValue.name' />
+          <mu-text-field label="标题" labelFloat v-model='addCardValue.name' />
         </mu-col>
         <mu-col width="100" tablet="100" desktop="100">
           <mu-text-field label="描述" labelFloat v-model='addCardValue.exps' fullWidth multiLine :rows="2" :rowsMax="6" class='ml-text' /></mu-col>
@@ -87,57 +87,63 @@
 
 <script>
 export default {
-  name: 'subject',
-  props: ['sResume'],
-  data () {
+  name: "subject",
+  props: ["sResume"],
+  data() {
     return {
       dialogExp: false,
       dialogExpI: 0,
       dialogCard: false,
       addExpValue: {
-        startTime: '',
-        endTime: '',
-        company: '',
-        job: '',
-        exps: ''
+        startTime: "",
+        endTime: "",
+        company: "",
+        job: "",
+        exps: ""
       },
       addCardValue: {
-        name: '',
-        exps: ''
-      },
-            sExp: this.sResume.exp,
-      sCustom: this.sResume.custom
+        name: "",
+        exps: ""
+      }
+    };
+  },
+  computed: {
+    sExp() {
+      return this.sResume.exp;
+    },
+    sCustom() {
+      return this.sResume.custom;
     }
   },
   methods: {
-    sAdd (vl, type, dl, index, types) {
-      this.close(dl)
+    sAdd(vl, type, dl, index, types) {
+      this.close(dl);
       if (arguments.length === 3) {
-        this.$emit('sAdd', vl, type)
+        this.$emit("sAdd", vl, type);
       } else {
-        this.$emit('sAdd', vl, type, index, types)
+        this.$emit("sAdd", vl, type, index, types);
       }
     },
-    sDel (vl, type, index, types) {
+    sDel(vl, type, index, types) {
       if (arguments.length === 2) {
-        this.$emit('sDel', vl, type)
+        this.$emit("sDel", vl, type);
       } else {
-        this.$emit('sDel', vl, type, index, types)
+        this.$emit("sDel", vl, type, index, types);
       }
     },
-    open (vl, index) {
+    open(vl, index) {
       if (arguments.length === 1) {
-        this[vl] = true
+        this[vl] = true;
       } else {
-        this[vl] = true
-        this.dialogExpI = index
+        this[vl] = true;
+        this.dialogExpI = index;
       }
     },
-    close (vl) {
-      this[vl] = false
+    close(vl) {
+      this[vl] = false;
     }
   }
-}
+};
 </script>
 
 <!-- Add "scoped" attribute to limit CSS to this component only -->
@@ -147,7 +153,7 @@ export default {
   min-height: 100vh;
   background-color: #ddd;
   color: #333;
-  transition: .5s;
+  transition: 0.5s;
   padding: 1.5em 2em;
   position: relative;
   overflow: hidden;
@@ -160,15 +166,13 @@ export default {
 .mu-card {
   margin-bottom: 1.5em;
 }
-.subject .mu-text-field-textarea{
+.subject .mu-text-field-textarea {
   text-indent: 2em;
 }
 
 /*.subject::-webkit-scrollbar{
   display: none;
 }*/
-
-
 
 .crad-li .card-exp-del,
 .crad-ul .card-exp-add,
@@ -178,7 +182,7 @@ export default {
   opacity: 0;
   /*visibility: ;*/
   /*display: none;*/
-  transition: .5s;
+  transition: 0.5s;
 }
 
 .crad-li:hover .card-exp-del,
@@ -190,11 +194,11 @@ export default {
   /*visibility: visible;*/
   display: inline-block;
 }
-.crad-li .card-exp-del{
+.crad-li .card-exp-del {
   display: none;
 }
-.crad-li:hover .card-exp-del{
-    display: inline-block;
+.crad-li:hover .card-exp-del {
+  display: inline-block;
 }
 .crad-li,
 .custom-li {
@@ -209,13 +213,13 @@ export default {
 .mu-card-actions {
   text-align: end;
 }
-.subject .card-exp-del-box{
+.subject .card-exp-del-box {
   top: 17px;
   left: 0;
   position: absolute;
   height: 0;
 }
-.subject:hover .card-exp-del-box{
+.subject:hover .card-exp-del-box {
   height: auto;
 }
 
