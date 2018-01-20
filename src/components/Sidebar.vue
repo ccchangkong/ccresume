@@ -1,12 +1,17 @@
 <template>
   <div class="sidebar" id="sidebar">
+    <!-- 头像 -->
     <div ref="pic" @mouseenter="handleHover('pic')" @mouseleave="handleHoverExit('pic')" style='position: relative;display: inline-block;width: 100%;'>
       <img :src="sAvatar" alt="" class="avatar" @click="open('dialogPic')">
       <mu-tooltip label="点击可替换图片" touch :show="show.pic" :trigger="trigger.pic" id='d-img' />
     </div>
+    <!-- 头像结束 -->
+    <!-- 核心信息 -->
     <div class="s-core" v-for="item in sCore" :key="item.index">
       <mu-text-field :label="item.name" labelFloat v-model='item.value' />
     </div>
+    <!-- 核心信息结束 -->
+    <!-- 技能栏 -->
     <div class="s-skils" v-for="(item, index) in sSkils" :key="index">
       <div class="s-skils-box">
         <mu-row gutter>
@@ -21,6 +26,8 @@
         <mu-icon-button icon="delete" @click="sDel(index,'skils')" />
       </div>
     </div>
+    <!-- 技能栏结束 -->
+    <!-- 按钮 -->
     <div v-show="showBtn" class="s-box-btn">
       <div ref="add" class="s-box-btns" @mouseenter="handleHover('add')" @mouseleave="handleHoverExit('add')">
         <mu-float-button icon="add" mini class="demo-float-button" @click="open('dialogSkil')" />
@@ -43,18 +50,23 @@
         <mu-tooltip label="重置" touch :show="show.reset" :trigger="trigger.reset" />
       </div>
     </div>
+    <!-- 按钮结束 -->
+    <!-- 技能添加弹窗 -->
     <mu-dialog :open="dialogSkil" title="添加技能" @close="close('dialogSkil')">
       <mu-text-field label="name" labelFloat v-model='addValue.name' />
       <mu-text-field label="skils" labelFloat v-model='addValue.skil' />
       <mu-flat-button slot="actions" @click="close('dialogSkil')" primary label="取消" />
       <mu-flat-button slot="actions" keyboardFocused primary @click="sAdd(addValue, 'skils', 'dialogSkil')" label="确定" />
     </mu-dialog>
+    <!-- 技能添加弹窗结束 -->
+    <!-- 头像弹窗 -->
     <mu-dialog :open="dialogPic" title="替换头像" @close="close('dialogPic')">
       <mu-flat-button slot="actions" @click="close('dialogPic')" primary label="取消" />
       <input type="file" id='upPic' accept="image/png,image/jpeg,image/webP">
       <p>3MB以下的png、jpg、jpeg或webp图片，建议使用方形图片</p>
       <mu-flat-button slot="actions" label="确定" @click="changePic('dialogPic')" />
     </mu-dialog>
+    <!-- 头像弹窗结束 -->
     <a :href="spic" id="dw" download="my.png"></a>
   </div>
 </template>
@@ -157,10 +169,6 @@ export default {
       this.showBtn = false;
       document.documentElement.scrollTop = 0;
       document.body.scrollTop = 0;
-      // var myList = document.querySelectorAll('.mu-tooltip')
-      // Array.prototype.forEach.call(myList, function (div) {
-      //   div.style.display = 'none'
-      // })
       this.$nextTick(function() {
         Html2canvas(document.getElementById("app"))
           .then(function(canvas) {

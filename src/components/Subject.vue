@@ -1,5 +1,6 @@
 <template>
   <div class="subject">
+    <!-- 经历列表 -->
     <div v-for="(item, index) in sExp" class="crad-ul" :key="index">
       <mu-card>
         <mu-card-title :title="item.name" />
@@ -34,7 +35,9 @@
         </mu-card-actions>
       </mu-card>
     </div>
-    <div class="custom-ul" v-for="item in sCustom" :key="item.index">
+    <!-- 经历列表结束 -->
+    <!-- 描述列表 -->
+    <div class="custom-ul" v-for="(item,index) in sCustom" :key="item.name">
       <mu-card class='custom-lis'>
         <mu-card-title :title="item.name" />
         <mu-card-text class='custom-li'>
@@ -45,9 +48,13 @@
         </mu-card-actions>
       </mu-card>
     </div>
+    <!-- 描述列表结束 -->
+    <!-- 新建卡片按钮 -->
     <div class="card-add-big-box">
       <mu-float-button label="新建卡片" @click="open('dialogCard')" class='card-add-big' icon='add' />
     </div>
+    <!-- 新建卡片按钮结束 -->
+    <!-- 经历弹窗 -->
     <mu-dialog :open="dialogExp" title="添加" @close="close('dialogExp')">
       <mu-row gutter>
         <mu-col width="100" tablet="50" desktop="50">
@@ -70,6 +77,8 @@
       <mu-flat-button slot="actions" @click="close('dialogExp')" primary label="取消" />
       <mu-flat-button slot="actions" keyboardFocused primary @click="sAdd(addExpValue, 'exp', 'dialogExp', dialogExpI, 'exp')" label="确定" />
     </mu-dialog>
+    <!-- 经历弹窗结束 -->
+    <!-- 描述弹窗 -->
     <mu-dialog :open="dialogCard" title="新建卡片" @close="close('dialogCard')">
       <mu-row gutter>
         <mu-col width="100" tablet="50" desktop="50">
@@ -81,6 +90,7 @@
       <mu-flat-button slot="actions" @click="close('dialogCard')" primary label="取消" />
       <mu-flat-button slot="actions" keyboardFocused primary @click="sAdd(addCardValue, 'custom', 'dialogCard')" label="确定" />
     </mu-dialog>
+    <!-- 描述弹窗结束 -->
   </div>
 </template>
 

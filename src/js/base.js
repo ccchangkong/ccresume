@@ -1,4 +1,4 @@
-let CC = {
+const CC = {
 	core: [
 		{ name: "姓名", value: "陈亮" },
 		{ name: "职业", value: "前端工程师" },
