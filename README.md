@@ -13,17 +13,19 @@
 > 引自[Shiroyan](https://github.com/Shiroyan/vue-material-template/edit/master/README.md)
 
 1. `npm install` 安装所有依赖
-2.	在`node_module/muse-ui/src/styles/import.less` 中找到 `@{MuseThemeUi}`
+  2.在`node_module/muse-ui/src/styles/import.less` 中找到 `@{MuseThemeUi}`
     将其更改为 `./themes/variables/light.less`
-3.  如果你想更改主题颜色，只需要把`light.less`更改为其他预设主题即可。当然你也可以直接去修改颜色变量
+2. 如果你想更改主题颜色，只需要把`light.less`更改为其他预设主题即可。当然你也可以直接去修改颜色变量
 
 ## 项目说明
 
-由webpack构建，vue2.0驱动，muse-ui样式库搭建，组件化开发，localstrong存储，html2canvas导出图片，jquery free
+由webpack构建，vue2.0驱动，muse-ui样式库搭建，组件化开发，localstrong存储，jquery free；
+
+可导入JSON文件，可导出图片、PDF、JSON文件
 
 ## 项目结构
 
-![](http://ww2.sinaimg.cn/large/6c7bfb12gw1fa47kk0cucj204i0k2gm9.jpg)
+![](http://wx1.sinaimg.cn/large/6c7bfb12ly1fnxk25ob4gj20880jggm9)
 
 vue-cli搭建的模板，分了两个组件
 
@@ -69,7 +71,7 @@ window.alert(),this.data什么的
 
 2.组件拆分不够，两个大模块确实不好看；
 
-3.没用vuex，数据通信有点乱；
+~~3.没用vuex，数据通信有点乱；~~(此情况下，组件间确实不应该用vuex)
 
 4.代码解耦不完全。
 
