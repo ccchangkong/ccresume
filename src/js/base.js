@@ -100,4 +100,4 @@ const CC = {
 	]
 }
 
-export  default CC
+export default CC

@@ -34,17 +34,26 @@
         <mu-tooltip label="添加技能" touch :show="show.add" :trigger="trigger.add" />
       </div>
       <div ref="photo" class="s-box-btns" @mouseenter="handleHover('photo')" @mouseleave="handleHoverExit('photo')">
-        <mu-float-button icon="add_a_photo" mini @click="photo()" />
+        <mu-float-button icon="add_a_photo" mini @click="downloadPhoto()" />
         <mu-tooltip label="生成图片" touch :show="show.photo" :trigger="trigger.photo" />
-      </div>
-      <div ref="cc" class="s-box-btns" @mouseenter="handleHover('cc')" @mouseleave="handleHoverExit('cc')">
-        <mu-float-button icon="closed_caption" mini @click="sCc()" />
-        <mu-tooltip label="cc长空" touch :show="show.cc" :trigger="trigger.cc" />
       </div>
       <div ref="pdf" class="s-box-btns" @mouseenter="handleHover('pdf')" @mouseleave="handleHoverExit('pdf')">
         <mu-float-button icon="description" mini @click="pdf()" />
         <mu-tooltip label="生成PDF" touch :show="show.pdf" :trigger="trigger.pdf" />
       </div>
+      <div ref="json" class="s-box-btns" @mouseenter="handleHover('json')" @mouseleave="handleHoverExit('json')">
+        <mu-float-button icon="system_update_alt" mini @click="downloadJson()" />
+        <mu-tooltip label="生成JSON" touch :show="show.json" :trigger="trigger.json" />
+      </div>
+      <div ref="json_i" class="s-box-btns" @mouseenter="handleHover('json_i')" @mouseleave="handleHoverExit('json_i')">
+        <mu-float-button icon="input" mini @click="open('dialogJson')" />
+        <mu-tooltip label="导入JSON" touch :show="show.json_i" :trigger="trigger.json_i" />
+      </div>
+      <div ref="cc" class="s-box-btns" @mouseenter="handleHover('cc')" @mouseleave="handleHoverExit('cc')">
+        <mu-float-button icon="closed_caption" mini @click="sCc()" />
+        <mu-tooltip label="cc长空" touch :show="show.cc" :trigger="trigger.cc" />
+      </div>
+
       <div ref="reset" class="s-box-btns" @mouseenter="handleHover('reset')" @mouseleave="handleHoverExit('reset')">
         <mu-float-button icon="delete_forever" mini @click="sClear()" secondary/>
         <mu-tooltip label="重置" touch :show="show.reset" :trigger="trigger.reset" />
@@ -67,6 +76,14 @@
       <mu-flat-button slot="actions" label="确定" @click="changePic('dialogPic')" />
     </mu-dialog>
     <!-- 头像弹窗结束 -->
+    <!-- JSON弹窗 -->
+    <mu-dialog :open="dialogJson" title="替换头像" @close="close('dialogJson')">
+      <mu-flat-button slot="actions" @click="close('dialogJson')" primary label="取消" />
+      <input type="file" id='upJson' accept=".json">
+      <p>请选择JSON文件</p>
+      <mu-flat-button slot="actions" label="确定" @click="changeJson('dialogJson')" />
+    </mu-dialog>
+    <!-- JSON弹窗结束 -->
     <a :href="spic" id="dw" download="my.png"></a>
   </div>
 </template>
@@ -75,6 +92,7 @@
 <script>
 import Html2canvas from "Html2canvas/dist/html2canvas.min.js";
 import jsPDF from "jspdf/dist/jspdf.min.js";
+import { saveAs } from "file-saver/FileSaver.min.js";
 export default {
   name: "sidebar",
   props: ["sResume", "sAvatar"],
@@ -84,6 +102,7 @@ export default {
       sho: true,
       dialogSkil: false,
       dialogPic: false,
+      dialogJson: false,
       addValue: {
         name: "",
         skil: 60
@@ -95,7 +114,9 @@ export default {
         photo: false,
         pic: false,
         cc: false,
-        pdf: false
+        pdf: false,
+        json: false,
+        json_i: false
       },
       trigger: {
         reset: null,
@@ -103,7 +124,9 @@ export default {
         photo: null,
         pic: null,
         cc: null,
-        pdf: null
+        pdf: null,
+        json: null,
+        json_i: null
       }
     };
   },
@@ -114,6 +137,8 @@ export default {
     this.trigger.pic = this.$refs.pic;
     this.trigger.cc = this.$refs.cc;
     this.trigger.pdf = this.$refs.pdf;
+    this.trigger.json = this.$refs.json;
+    this.trigger.json_i = this.$refs.json_i;
   },
   computed: {
     sCore() {
@@ -138,6 +163,17 @@ export default {
       } else {
         window.alert("big");
       }
+    },
+    changeJson(dl) {
+      this.close(dl);
+      let self = this;
+      let file = document.getElementById("upJson").files[0];
+      let jsonFile = new window.FileReader();
+      jsonFile.readAsText(file);
+      jsonFile.onload = function() {
+        let jsonData = JSON.parse(jsonFile.result);
+        self.$emit("changeJson", jsonData);
+      };
     },
     sAdd(vl, type, dl) {
       this.close(dl);
@@ -164,7 +200,7 @@ export default {
     handleHoverExit(vl) {
       this.show[vl] = false;
     },
-    photo() {
+    downloadPhoto() {
       let self = this;
       this.showBtn = false;
       document.documentElement.scrollTop = 0;
@@ -195,6 +231,14 @@ export default {
             self.showBtn = true;
           });
       });
+    },
+    downloadJson() {
+      var file = new File(
+        [JSON.stringify(this.sResume)],
+        "json_" + Date.now() + ".json",
+        { type: "application/json" }
+      );
+      saveAs(file);
     },
     downloadPDF(imageData) {
       const img = new Image();

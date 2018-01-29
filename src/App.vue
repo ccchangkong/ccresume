@@ -1,6 +1,6 @@
 <template>
   <div id="app">
-      <sidebar :sResume="resume" :sAvatar='avatar' @sAdd="add" @sDel='del' @sClear='clear' @changePic='change' @sCc='cc'></sidebar>
+      <sidebar :sResume="resume" :sAvatar='avatar' @sAdd="add" @sDel='del' @sClear='clear' @changePic='change' @changeJson='changeJ' @sCc='cc'></sidebar>
       <subject :sResume="resume" @sAdd="add" @sDel='del'></subject>
   </div>
 </template>
@@ -22,33 +22,35 @@ export default {
     Subject
   },
   methods: {
-    add(vl, type, index, types) {
-      let vls = {};
-      for (let i in vl) {
-        vls[i] = vl[i];
-        vl[i] = "";
+    add(val, type, index, types) {
+      let vals = {};
+      for (let i in val) {
+        vals[i] = val[i];
+        val[i] = "";
       }
       if (arguments.length === 2) {
-        this.resume[type].push(vls);
+        this.resume[type].push(vals);
       } else {
-        this.resume[type][index][types].push(vls);
+        this.resume[type][index][types].push(vals);
       }
     },
-    del(vl, type, index, types) {
+    del(val, type, index, types) {
       if (arguments.length === 2) {
-        this.resume[type].splice(vl, 1);
+        this.resume[type].splice(val, 1);
       } else {
-        this.resume[type][index][types].splice(vl, 1);
+        this.resume[type][index][types].splice(val, 1);
       }
     },
     clear() {
-      // window.alert(this.resume['exp'][0]['exp'][0].exps)
       window.localStorage.removeItem("resume");
       window.localStorage.removeItem("avatar");
       this.reset();
     },
-    change(vl) {
-      this.avatar = vl;
+    change(val) {
+      this.avatar = val;
+    },
+    changeJ(obj){
+        this.resume=obj
     },
     reset() {
       this.resume = {
