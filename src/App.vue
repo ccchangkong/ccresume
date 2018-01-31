@@ -1,7 +1,7 @@
 <template>
   <div id="app">
-      <sidebar :sResume="resume" :sAvatar='avatar' @sAdd="add" @sDel='del' @sClear='clear' @changePic='change' @changeJson='changeJ' @sCc='cc'></sidebar>
-      <subject :sResume="resume" @sAdd="add" @sDel='del'></subject>
+    <sidebar :sResume="resume" :sAvatar='avatar' @sAdd="add" @sDel='del' @sClear='reset' @changePic='change' @changeJson='changeJ' @sCc='cc'></sidebar>
+    <subject :sResume="resume" @sAdd="add" @sDel='del'></subject>
   </div>
 </template>
 
@@ -41,16 +41,11 @@ export default {
         this.resume[type][index][types].splice(val, 1);
       }
     },
-    clear() {
-      window.localStorage.removeItem("resume");
-      window.localStorage.removeItem("avatar");
-      this.reset();
-    },
     change(val) {
       this.avatar = val;
     },
-    changeJ(obj){
-        this.resume=obj
+    changeJ(obj) {
+      this.resume = obj;
     },
     reset() {
       this.resume = {
