@@ -7,7 +7,7 @@ const CC = {
 		{ name: "简介", value: "男，23岁，前端偏前" }
 	],
 	skils: [
-		{ name: "JS", skil: 60 },
+		{ name: "JS", skil: 65 },
 		{ name: "CSS", skil: 80 },
 		{ name: "HTML", skil: 80 }
 	],
@@ -17,10 +17,17 @@ const CC = {
 			exp: [
 				{
 					startTime: "2016-05-09",
-					endTime: "",
-					company: "聚奢网络科技",
+					endTime: "2017-05-05",
+					company: "南京聚奢网络科技",
 					job: "前端工程师",
 					exps: "负责部分商城、分销、后台、移动端及APP内置页面的制作，协助后端开发部分系统。"
+				},
+				{
+					startTime: "2017-06-01",
+					endTime: "",
+					company: "孚派特环境科技（苏州）",
+					job: "前端工程师",
+					exps: "负责所有前端工作。"
 				}
 			]
 		},
@@ -33,12 +40,12 @@ const CC = {
 					company: "个人项目",
 					job: "无",
 					exps:
-						"个人技术博客\nhttp://www.vastskycc.com/\n2015年7月注册，2016年5月改版上线，平均每月更新三篇技术文章"
+						"个人技术博客\nhttp://www.vastskycc.com/\n2015年7月注册，2016年5月改版上线，不时更新技术文章"
 				},
 				{
 					startTime: "2016-05-09",
-					endTime: "",
-					company: "聚奢网络科技",
+					endTime: "2017-05-09",
+					company: "南京聚奢网络科技",
 					job: "前端工程师",
 					exps:
 						"聚奢网自己负责制作的页面\nhttps://github.com/ccchangkong/work_jushewang\n传统前端项目，电脑端兼容IE8+，移动端兼容微信webview，渐进增强，后退平稳，编码风格日趋规范"
@@ -49,7 +56,7 @@ const CC = {
 					company: "个人项目",
 					job: "无",
 					exps:
-						"基于vue+muse-ui的简历生成器\nhttps://github.com/ccchangkong/ccresume/\n由webpack构建，vue2.0驱动，muse-ui样式库搭建，组件化开发，localstrong存储，jquery free"
+						"基于vue+muse-ui的简历生成器\nhttps://github.com/ccchangkong/ccresume/\n由webpack构建，vue2.0驱动，muse-ui样式库搭建，组件化开发，localstrong存储，多样化的输入输出，jquery free"
 				},
 				{
 					startTime: "2017-01-01",
@@ -57,7 +64,15 @@ const CC = {
 					company: "个人项目",
 					job: "无",
 					exps:
-						"基于vue全家桶的音乐播放器\nhttps://github.com/ccchangkong/ccplayer/\n由webpack构建，vue2.0驱动，模块化开发，完成度60%"
+						"基于vue全家桶的音乐播放器\nhttps://github.com/ccchangkong/ccplayer/\n由webpack构建，vue2.0驱动，模块化开发，QQ音乐API（已失效）。"
+				},
+				{
+					startTime: "2017-06-01",
+					endTime: "2017-08-01",
+					company: "孚派特环境科技（苏州）",
+					job: "前端工程师",
+					exps:
+						"基于weui+zepto.js+微信JS-SDK的公众号网页\n包含了太仓智慧水务（水质监测管理）、孚派特微解答和微验证，都为带前端路由的复杂页面，灵活应用微信JS-SDK完成需求。"
 				}
 			]
 		},
