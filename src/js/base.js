@@ -4,7 +4,7 @@ const CC = {
 		{ name: "职业", value: "前端工程师" },
 		{ name: "电话", value: "18761699850" },
 		{ name: "邮箱", value: "chlo0o@qq.com" },
-		{ name: "简介", value: "男，23岁，前端偏前" }
+		{ name: "简介", value: "男，27岁，前端偏前" }
 	],
 	skils: [
 		{ name: "JS", skil: 65 },
@@ -24,10 +24,17 @@ const CC = {
 				},
 				{
 					startTime: "2017-06-01",
-					endTime: "",
+					endTime: "2018-06-01",
 					company: "孚派特环境科技（苏州）",
 					job: "前端工程师",
 					exps: "负责所有前端工作。"
+				},
+				{
+					startTime: "2018-06-01",
+					endTime: "2020-06-01",
+					company: "南京欣网网络科技（苏州）",
+					job: "前端工程师",
+					exps: "负责苏州移动微厅、湖南移动微厅页面开发。"
 				}
 			]
 		},
@@ -40,7 +47,7 @@ const CC = {
 					company: "个人项目",
 					job: "无",
 					exps:
-						"个人技术博客\nhttp://www.vastskycc.com/\n2015年7月注册，2016年5月改版上线，不时更新技术文章"
+						"个人技术博客\nhttp://www.vastskycc.com/\n2015年7月注册，2016年5月改版上线，不时更新技术文章。"
 				},
 				{
 					startTime: "2016-05-09",
@@ -48,7 +55,7 @@ const CC = {
 					company: "南京聚奢网络科技",
 					job: "前端工程师",
 					exps:
-						"聚奢网自己负责制作的页面\nhttps://github.com/ccchangkong/work_jushewang\n传统前端项目，电脑端兼容IE8+，移动端兼容微信webview，渐进增强，后退平稳，编码风格日趋规范"
+						"聚奢网自己负责制作的页面\nhttps://github.com/ccchangkong/work_jushewang\n传统前端项目，电脑端兼容IE8+，移动端兼容微信webview。"
 				},
 				{
 					startTime: "2016-11-01",
@@ -96,7 +103,7 @@ const CC = {
 					company: "孚派特环境科技（苏州）",
 					job: "前端工程师",
 					exps:
-						"基于vue全家桶的移动端官网SPA\n使用flexable.js完成页面适配。"
+						"基于vue全家桶的孚派特移动端官网SPA。"
 				},
 				{
 					startTime: "2018-05-02",
@@ -107,14 +114,56 @@ const CC = {
 						"基于bootstrap+jquery+高德地图API的河道巡查后台管理系统\n在后台系统的基础上加上大量地图操作和管理。"
 				},
 				{
-					startTime: "2018-05-12",
-					endTime: "2018-05-14",
+					startTime: "2018-05-20",
+					endTime: "2018-05-24",
 					company: "个人项目",
 					job: "无",
 					exps:
 						"亲戚关系计算器的小程序\nhttps://github.com/ccchangkong/miniprogram"
 				}
-
+				,
+				{
+					startTime: "2018-06-01",
+					endTime: "2020-05-30",
+					company: "南京欣网网络科技（苏州）",
+					job: "前端工程师",
+					exps:
+						"苏州移动微厅、湖南移动微厅页面切图。"
+				}
+				,
+				{
+					startTime: "2019-02-12",
+					endTime: "2019-05-14",
+					company: "踏歌出行",
+					job: "前端工程师",
+					exps:
+						"踏歌出行数据大屏页面、官网、分销系统页面开发。"
+				}
+				,
+				{
+					startTime: "2019-10-12",
+					endTime: "2019-10-20",
+					company: "个人项目",
+					job: "前端工程师",
+					exps:
+						"基于uni-app的请柬小程序，带导航。"
+				},
+				{
+					startTime: "2019-09-12",
+					endTime: "2019-11-14",
+					company: "海洋智家",
+					job: "前端工程师",
+					exps:
+						"基于uni-app的海洋智家小程序、APP。"
+				},
+				{
+					startTime: "2020-04-12",
+					endTime: "2020-05-14",
+					company: "个人项目",
+					job: "前端工程师",
+					exps:
+						"基于uni-app的课程商城小程序。"
+				}
 			]
 		},
 		{
@@ -141,7 +190,7 @@ const CC = {
 		{
 			name: "自我评价",
 			exps:
-				"2015年开始接触前端技术，两年工作经验，一年切图，一年业务，中间自己写了些小项目，书确实看了不少，领悟的还是不够，在github和segmentfault有点东西。前端水平自觉中级偏弱，偏向于前端偏前领域。"
+				"2015年开始接触前端技术，四年工作经验，一年切图，一年业务，两年微信和移动端，中间自己写了些小项目，书确实看了不少，领悟的还是不够，在github和segmentfault有点东西。前端水平自觉中级偏弱，偏向于前端偏前领域。"
 		},
 		{
 			name: "技能水平",
